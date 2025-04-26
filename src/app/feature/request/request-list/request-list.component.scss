@@ -1,0 +1,139 @@
+$table-background: #fafafa;
+$table-border-color: #e3b57d;
+$button-background: #f0a500;
+$button-hover: #e67e22;
+$button-focus: #f39c12;
+
+.table-container {
+    padding: 20px;
+    background-color: $table-background;
+    border-radius: 10px;
+    border: 1px solid $table-border-color;
+    max-width: max;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    
+    h2 {
+        text-align: center;
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .pedido-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        thead {
+            background-color: #f3c300;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+
+            th {
+                padding: 12px;
+                text-align: center;
+                font-size: 14px;
+            }
+        }
+
+        tbody {
+            tr {
+                background-color: #fff;
+                transition: background-color 0.3s ease;
+
+                &:nth-child(even) {
+                    background-color: #f9f9f9;
+                }
+
+                &:hover {
+                    background-color: #f4e1a1;
+                }
+
+                td {
+                    padding: 12px;
+                    text-align: center;
+                    font-size: 14px;
+                    color: #555;
+                    border-top: 1px solid #ddd;
+                }
+
+                .actions {
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+
+                    button {
+                        background-color: #4CAF50;
+                        color: white;
+                        border: none;
+                        padding: 6px 12px;
+                        cursor: pointer;
+                        border-radius: 4px;
+                        font-size: 14px;
+                        transition: background-color 0.3s ease;
+
+                        &:hover {
+                            background-color: #45a049;
+                        }
+
+                        &:active {
+                            background-color: #388e3c;
+                        }
+                    }
+
+                    .edit {
+                        background-color: #ff9800;
+
+                        &:hover {
+                            background-color: #e68900;
+                        }
+                    }
+
+                    .delete {
+                        background-color: #e53935;
+
+                        &:hover {
+                            background-color: #c62828;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* Eliminar subrayado en el enlace <a> */
+    a {
+        text-decoration: none; /* Elimina el subrayado por defecto en el enlace */
+    }
+
+    .btn-navigate {
+        width: 30%; /* Reducción del ancho del botón */
+        padding: 10px 20px; /* Reducción del padding para hacerlo más pequeño */
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px; /* Fuente más pequeña */
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 20px auto; /* Esto asegura que el botón se centre horizontalmente */
+        cursor: pointer;
+        display: block; /* Esto asegura que el botón se comporta como un bloque y se puede centrar */
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #0056b3;
+            transform: scale(1.05); /* Aumenta el tamaño al pasar el ratón */
+        }
+
+        &:active {
+            background-color: #00408a;
+            transform: scale(1); /* Vuelve al tamaño normal al hacer clic */
+        }
+    }
+}

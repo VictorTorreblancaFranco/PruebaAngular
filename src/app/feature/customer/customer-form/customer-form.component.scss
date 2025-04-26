@@ -1,0 +1,132 @@
+$form-background: #f9f4e5; // Fondo suave
+$form-border-color: #e3b57d; // Borde cálido
+$button-background: #f0a500; // Fondo de los botones
+$button-hover: #e67e22; // Color hover para los botones
+$button-focus: #f39c12; // Color al enfocar el botón
+
+.form-container {
+    padding: 20px;
+    background-color: $form-background;
+    border-radius: 10px;
+    border: 1px solid $form-border-color;
+    max-width: 900px; // Aumentamos el max-width para permitir más espacio horizontal
+    margin: 20px auto; // Centrado en la página
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden; // Evitar desbordamiento
+
+    h2 {
+        text-align: center;
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .form-row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap; // Aseguramos que los elementos se ajusten bien al contenedor
+
+        .form-group {
+            width: 32%; // Distribuimos en 3 columnas (33% para cada grupo)
+            margin-bottom: 15px;
+
+            label {
+                display: block;
+                font-size: 14px;
+                color: #5d4f33;
+                margin-bottom: 8px;
+            }
+
+            input,
+            select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+                box-sizing: border-box;
+                background-color: #fff;
+                color: #333;
+
+                &::placeholder {
+                    color: #a6a6a6;
+                    font-style: italic;
+                }
+
+                &:focus {
+                    border-color: $form-border-color;
+                    outline: none;
+                    box-shadow: 0 0 5px rgba(255, 165, 0, 0.7);
+                }
+            }
+        }
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background-color: $button-background;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            background-color: $button-hover;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        &:active {
+            background-color: darken($button-background, 10%);
+            transform: translateY(2px);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 8px $button-focus;
+        }
+    }
+
+    // Eliminar subrayado solo para el enlace que contiene el botón
+a {
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.btn-navigate {
+    width: auto;  // Cambié el ancho a auto para que no ocupe un tamaño excesivo
+    padding: 10px 20px;  // Reducí el padding para que el botón sea más pequeño
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px; // Bordes redondeados
+    font-size: 14px;  // Tamaño de fuente más pequeño
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 20px auto; // Centrado horizontalmente
+    display: block; // Esto es para asegurar que el botón sea un bloque y se centre
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05); // Efecto de aumento al pasar el mouse
+    }
+
+    &:active {
+        background-color: #00408a;
+        transform: scale(1); // Vuelve al tamaño normal al hacer clic
+    }
+
+    &:focus {
+        outline: none; // Eliminamos el contorno
+    }
+}
+
+}

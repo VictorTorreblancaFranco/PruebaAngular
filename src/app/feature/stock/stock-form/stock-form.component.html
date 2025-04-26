@@ -1,0 +1,84 @@
+<div class="form-container">
+    <h2>Formulario de Stock</h2>
+
+    <form action="/enviar" method="post">
+        <!-- Primera fila -->
+        <div class="form-row">
+            <!-- ID Producto -->
+            <div class="form-group">
+                <label for="idProducto">ID Producto:</label>
+                <input type="text" id="idProducto" name="idProducto" required placeholder="ID único del producto">
+            </div>
+
+            <!-- Nombre del Producto -->
+            <div class="form-group">
+                <label for="nombreProducto">Nombre del Producto:</label>
+                <input type="text" id="nombreProducto" name="nombreProducto" required placeholder="Nombre del producto">
+            </div>
+        </div>
+
+        <!-- Segunda fila -->
+        <div class="form-row">
+            <!-- Precio del Producto -->
+            <div class="form-group">
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" step="0.01" required placeholder="Precio del producto">
+            </div>
+
+            <!-- Cantidad -->
+            <div class="form-group">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" required placeholder="Cantidad disponible">
+            </div>
+        </div>
+
+        <!-- Tercera fila -->
+        <div class="form-row">
+            <!-- Fecha de Compra -->
+            <div class="form-group">
+                <label for="fechaCompra">Fecha de Compra:</label>
+                <input type="date" id="fechaCompra" name="fechaCompra" required>
+            </div>
+
+            <!-- Proveedor -->
+            <div class="form-group">
+                <label for="proveedor">Proveedor:</label>
+                <input type="text" id="proveedor" name="proveedor" required placeholder="Proveedor del producto">
+            </div>
+        </div>
+
+        <!-- Cuarta fila -->
+        <div class="form-row">
+            <!-- Categoría del Producto -->
+            <div class="form-group">
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria" required>
+                    <option value="">Seleccionar Categoría</option>
+                    <option value="pan">Pan</option>
+                    <option value="pasteleria">Pastelería</option>
+                    <option value="bebida">Bebida</option>
+                    <option value="congelado">Congelado</option>
+                </select>
+            </div>
+
+            <!-- Descripción del Producto -->
+            <div class="form-group description-right">
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" rows="3" required placeholder="Descripción del producto"></textarea>
+            </div>
+        </div>
+
+        <!-- Botón Enviar -->
+        <div class="form-group submit">
+            <input type="submit" value="Registrar Producto">
+        </div>
+    </form>
+
+    <!-- Botón para ver productos registrados -->
+    <div class="form-group submit">
+        <a href="/product-list">
+            <button type="button" class="btn-navigate">Ver Productos Registrados</button>
+        </a>
+    </div>
+    
+</div>

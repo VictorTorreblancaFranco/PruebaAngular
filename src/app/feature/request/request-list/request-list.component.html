@@ -1,0 +1,67 @@
+<div class="table-container">
+    <h2>Lista de Pedidos</h2>
+
+    <table class="pedido-table">
+        <thead>
+            <tr>
+                <th>ID del Pedido</th>
+                <th>Cliente</th>
+                <th>Fecha de Pedido</th>
+                <th>Fecha de Entrega</th>
+                <th>Estado</th>
+                <th>Método de Pago</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí van los datos de los pedidos -->
+            <tr>
+                <td>1</td>
+                <td>Juan Pérez</td>
+                <td>2025-04-25 10:30</td>
+                <td>2025-04-26 12:00</td>
+                <td>Pagado</td>
+                <td>Efectivo</td>
+                <td>Pan</td>
+                <td>3</td>
+                <td>$15</td>
+                <td>Pedido de 3 panes grandes</td>
+                <td class="actions">
+                    <button class="edit">Editar</button>
+                    <button class="delete">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>María González</td>
+                <td>2025-04-20 15:45</td>
+                <td>2025-04-21 11:30</td>
+                <td>Pendiente</td>
+                <td>Tarjeta</td>
+                <td>Pastel</td>
+                <td>1</td>
+                <td>$15</td>
+                <td>Pastel personalizado para cumpleaños</td>
+                <td class="actions">
+                    <button class="edit">Editar</button>
+                    <button class="delete">Eliminar</button>
+                </td>
+            </tr>
+            <!-- Más pedidos aquí -->
+        </tbody>
+    </table>
+
+    <!-- Botón para ir al formulario de pedidos -->
+    <div class="button-container">
+        <a href="/request-form">
+            <button type="button" class="btn-navigate">Registrar Nuevo Pedido</button>
+        </a>
+    </div>
+    
+</div>
+
+

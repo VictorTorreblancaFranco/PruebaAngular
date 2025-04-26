@@ -1,0 +1,157 @@
+/* Definición de colores */
+$form-background: #f9f4e5;
+$form-border-color: #e3b57d;
+$button-background: #f0a500;
+$button-hover: #e67e22;
+$button-focus: #f39c12;
+
+.form-container {
+    padding: 20px;
+    background-color: $form-background;
+    border-radius: 10px;
+    border: 1px solid $form-border-color;
+    max-width: 500px;
+    width: 100%;
+    margin: 20px auto; /* Centrado automático */
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    h2 {
+        text-align: center; /* Centrado del título */
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Formulario de filas */
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .form-group {
+        width: 48%;
+        margin-bottom: 15px;
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #5d4f33;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #333;
+
+            &:focus {
+                border-color: $form-border-color;
+                outline: none;
+                box-shadow: 0 0 5px rgba(255, 165, 0, 0.7);
+            }
+
+            &::placeholder {
+                color: #a6a6a6;
+                font-style: italic;
+            }
+        }
+    }
+
+    /* Botón de enviar centrado */
+    .form-group.submit {
+        text-align: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    input[type="submit"] {
+        width: auto;
+        padding: 10px 20px;
+        background-color: $button-background;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: -15px 0;
+
+        &:hover {
+            background-color: $button-hover;
+        }
+
+        &:active {
+            background-color: darken($button-background, 10%);
+        }
+    }
+
+/* Eliminar el subrayado del enlace <a> */
+a {
+    text-decoration: none; /* Elimina el subrayado por defecto */
+}
+
+/* Estilos para el botón dentro del enlace <a> */
+.btn-navigate {
+    width: auto; /* Ajusta el tamaño del botón */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: -20px auto; /* Asegura que el botón esté centrado */
+    cursor: pointer;
+    display: block; /* Asegura que el botón se muestre como bloque */
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    &:active {
+        background-color: #00408a;
+        transform: scale(1);
+    }
+}
+
+}
+
+/* Estilos responsivos para pantallas más pequeñas */
+@media (max-width: 600px) {
+    .form-container {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .btn-navigate {
+        width: 80%;
+    }
+}

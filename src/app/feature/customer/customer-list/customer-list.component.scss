@@ -1,0 +1,139 @@
+$form-background: #f9f4e5; // Fondo suave
+$form-border-color: #e3b57d; // Borde cálido
+$button-background: #f0a500; // Fondo de los botones
+$button-hover: #e67e22; // Color hover para los botones
+$button-focus: #f39c12; // Color al enfocar el botón
+
+.title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3e3e3e;
+    font-family: 'Arial', sans-serif;
+}
+
+.client-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-radius: 10px;
+    background-color: #fafafa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    thead {
+        background-color: #f3c300; /* Color cálido similar al pan */
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+
+        th {
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+    }
+
+    tbody {
+        tr {
+            background-color: #fff;
+            transition: background-color 0.3s ease;
+
+            &:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+
+            &:hover {
+                background-color: #f4e1a1; /* Un tono más suave al pasar el mouse */
+            }
+
+            td {
+                padding: 8px 15px;
+                text-align: center;
+                font-size: 0.9rem;
+                color: #555;
+                border-top: 1px solid #ddd;
+            }
+
+            .actions {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+
+                button {
+                    background-color: #4CAF50; /* Verde suave, asociado con frescura */
+                    color: white;
+                    border: none;
+                    padding: 6px 12px;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    font-size: 0.875rem;
+                    transition: background-color 0.3s ease;
+
+                    &:hover {
+                        background-color: #45a049;
+                    }
+
+                    &:active {
+                        background-color: #388e3c;
+                    }
+                }
+
+                .edit {
+                    background-color: #ff9800; /* Naranja suave */
+
+                    &:hover {
+                        background-color: #e68900;
+                    }
+                }
+
+                .delete {
+                    background-color: #e53935; /* Rojo suave */
+
+                    &:hover {
+                        background-color: #c62828;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Eliminar el subrayado de los enlaces que envuelven el botón
+a {
+    text-decoration: none !important; /* Asegura que se elimine el subrayado de los enlaces */
+}
+
+// Botón "Ir a Formulario de Cliente"
+.btn-navigate {
+    width: auto;  // Cambié el ancho a auto para que no ocupe un tamaño excesivo
+    padding: 10px 20px;  // Reducí el padding para que el botón sea más pequeño
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px; // Bordes redondeados
+    font-size: 14px;  // Tamaño de fuente más pequeño
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 20px auto; // Centrado horizontalmente
+    display: block; // Esto es para asegurar que el botón sea un bloque y se centre
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+    // Eliminar el subrayado de los enlaces
+    text-decoration: none;  // Elimina el subrayado del enlace (si fuera necesario)
+
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05); // Efecto de aumento al pasar el mouse
+    }
+
+    &:active {
+        background-color: #00408a;
+        transform: scale(1); // Vuelve al tamaño normal al hacer clic
+    }
+
+    &:focus {
+        outline: none; // Eliminamos el contorno
+    }
+}

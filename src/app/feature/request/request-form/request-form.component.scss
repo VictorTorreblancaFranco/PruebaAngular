@@ -1,0 +1,143 @@
+$form-background: #f9f4e5; // Fondo suave
+$form-border-color: #e3b57d; // Borde cálido
+$button-background: #f0a500; // Fondo de los botones
+$button-hover: #e67e22; // Color hover para los botones
+$button-focus: #f39c12; // Color al enfocar el botón
+
+.form-container {
+    padding: 20px;
+    background-color: $form-background;
+    border-radius: 10px;
+    border: 1px solid $form-border-color;
+    max-width: 600px; /* Hacer el formulario un poco más estrecho */
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    h2 {
+        text-align: center;
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;  /* Permite que los campos se acomoden en varias líneas */
+        gap: 10px; /* Añade un espacio entre los campos */
+        
+        .form-group {
+            width: 32%; /* Reducido a 32% para que quepan mejor los campos */
+            margin-bottom: 10px; /* Espaciado entre los campos */
+
+            label {
+                display: block;
+                font-size: 14px;
+                color: #5d4f33;
+                margin-bottom: 5px;
+            }
+
+            input,
+            select,
+            textarea {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+                box-sizing: border-box;
+                background-color: #fff;
+                color: #333;
+
+                &::placeholder {
+                    color: #a6a6a6;
+                    font-style: italic;
+                }
+
+                &:focus {
+                    border-color: $form-border-color;
+                    outline: none;
+                    box-shadow: 0 0 5px rgba(255, 165, 0, 0.7);
+                }
+            }
+        }
+
+        /* Ajuste para el campo de descripción, alineado a la derecha */
+        .description-right {
+            width: 100%;  /* Ocupa todo el ancho disponible */
+            margin-top: 15px;
+        }
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background-color: $button-background;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: $button-hover;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        &:active {
+            background-color: darken($button-background, 10%);
+            transform: translateY(2px);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 8px $button-focus;
+        }
+    }
+
+    .btn-navigate {
+        width: 100%;
+        padding: 12px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        &:active {
+            background-color: #00408a;
+            transform: scale(1);
+        }
+    }
+}
+
+// Estilos responsivos
+@media (max-width: 768px) {
+    .form-container {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .form-row {
+        flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    }
+
+    .form-group {
+        width: 100%; /* Los campos ocupan todo el ancho en pantallas pequeñas */
+    }
+}

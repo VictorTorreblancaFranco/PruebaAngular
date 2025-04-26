@@ -1,0 +1,108 @@
+<div class="form-container">
+    <h2>Registrar Pedido</h2>
+
+    <form action="/enviar" method="post">
+        <!-- Primera fila -->
+        <div class="form-row">
+            <!-- ID no editable -->
+            <div class="form-group">
+                <label for="id">ID del Pedido:</label>
+                <input type="text" id="id" name="id" value="ID de Pedido" readonly />
+            </div>
+
+            <!-- Selección de Cliente -->
+            <div class="form-group">
+                <label for="cliente">Seleccionar Cliente:</label>
+                <select id="cliente" name="cliente" onchange="onClientSelect()" required>
+                    <option value="">Seleccionar Cliente</option>
+                    <option value="1" data-name="Juan Pérez" data-phone="987654321" data-address="Calle Ficticia 123">Juan Pérez</option>
+                    <option value="2" data-name="María González" data-phone="912345678" data-address="Avenida Libertador 456">María González</option>
+                </select>
+            </div>
+
+            <!-- Fecha de Pedido -->
+            <div class="form-group">
+                <label for="fechaPedido">Fecha de Pedido:</label>
+                <input type="datetime-local" id="fechaPedido" name="fechaPedido" required />
+            </div>
+        </div>
+
+        <!-- Segunda fila -->
+        <div class="form-row">
+            <!-- Fecha de Entrega -->
+            <div class="form-group">
+                <label for="fechaEntrega">Fecha de Entrega:</label>
+                <input type="datetime-local" id="fechaEntrega" name="fechaEntrega" required />
+            </div>
+
+            <!-- Estado del Pedido -->
+            <div class="form-group">
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado" required>
+                    <option value="pagado">Pagado</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="cancelado">Cancelado</option>
+                </select>
+            </div>
+
+            <!-- Método de Pago -->
+            <div class="form-group">
+                <label for="metodoPago">Método de Pago:</label>
+                <select id="metodoPago" name="metodoPago" required>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                    <option value="transferencia">Transferencia Bancaria</option>
+                    <option value="yape">Yape</option>
+                    <option value="plin">Plin</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Tercera fila -->
+        <div class="form-row">
+            <!-- Selección de Producto -->
+            <div class="form-group">
+                <label for="producto">Seleccionar Producto:</label>
+                <select id="producto" name="producto" required>
+                    <option value="">Seleccionar Producto</option>
+                    <option value="pan" data-price="5">Pan</option>
+                    <option value="pastel" data-price="15">Pastel</option>
+                    <option value="bebida" data-price="3">Bebida</option>
+                </select>
+            </div>
+            
+
+            <!-- Cantidad del Producto -->
+            <div class="form-group">
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" min="1" required />
+            </div>
+
+                    <!-- Total -->
+        <div class="form-row">
+            <div class="form-group total">
+                <label for="total">Total:</label>
+                <input type="text" id="total" name="total" value="0" readonly />
+            </div>
+        </div>
+
+            <!-- Descripción (debajo de Cantidad) -->
+            <div class="form-group description-right">
+                <label for="descripcion">Descripción (opcional):</label>
+                <textarea id="descripcion" name="descripcion" rows="3" placeholder="Ingrese detalles adicionales, como personalización de productos o instrucciones especiales."></textarea>
+            </div>
+        </div>
+
+        <input type="submit" value="Enviar Pedido" />
+    </form>
+
+    <!-- Botón para ir a la lista de pedidos -->
+    <a href="lista-pedidos.html">
+        <button type="button" class="btn-navigate">Ir a Lista de Pedidos</button>
+    </a>
+
+    <!-- Nuevo botón para registrar cliente -->
+    <a href="/customer-form">
+        <button type="button" class="btn-navigate">Registrar Cliente</button>
+    </a>
+</div>

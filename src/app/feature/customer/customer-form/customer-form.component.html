@@ -1,0 +1,66 @@
+<div class="form-container">
+    <h2>Formulario de Clientes</h2>
+
+    <form action="/enviar" method="post">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" placeholder="ID del Cliente" readonly />
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre del Cliente" required />
+            </div>
+
+            <div class="form-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" placeholder="Apellido del Cliente" required />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" name="telefono" placeholder="Teléfono del Cliente" required />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Email del Cliente" required />
+            </div>
+
+            <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" placeholder="Dirección del Cliente" required />
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni" placeholder="DNI del Cliente" required />
+            </div>
+
+            <div class="form-group">
+                <label for="fechaRegistro">Fecha de Registro:</label>
+                <input type="datetime-local" id="fechaRegistro" name="fechaRegistro" required />
+            </div>
+
+            <div class="form-group">
+                <label for="estado">Estado:</label>
+                <select id="estado" name="estado" required>
+                    <option value="activo">Activo</option>
+                    <option value="inactivo">Inactivo</option>
+                </select>
+            </div>
+        </div>
+
+        <input type="submit" value="Registrar Cliente" />
+    </form>
+
+    <!-- Botón para ir a la lista de clientes -->
+    <a href="/customer-list">
+        <button type="button" class="btn-navigate">Ir a la Lista de Clientes</button>
+    </a>
+</div>
