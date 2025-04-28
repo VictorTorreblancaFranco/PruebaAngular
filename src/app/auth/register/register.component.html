@@ -1,0 +1,66 @@
+<div class="register-container">
+    <h2>Registro de Usuario</h2>
+
+    <form (ngSubmit)="onRegister()" class="register-form">
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="fullName" name="fullName" placeholder="Nombres completos" required />
+        </div>
+
+        <div class="form-group">
+            <input type="email" [(ngModel)]="email" name="email" placeholder="Correo electrónico" required />
+        </div>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="dni" name="dni" placeholder="DNI" maxlength="8" required />
+        </div>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="address" name="address" placeholder="Dirección" required />
+        </div>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="phone" name="phone" placeholder="Número de celular" required />
+        </div>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="phoneOptional" name="phoneOptional"
+                placeholder="Número opcional (opcional)" />
+        </div>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="emergencyContact" name="emergencyContact"
+                placeholder="Persona de contacto en emergencia" required />
+        </div>
+
+        <div class="form-group">
+            <select [(ngModel)]="role" name="role" required (change)="onRoleChange()">
+                <option value="" disabled selected>Selecciona un rol</option>
+                <option value="colaborador">Colaborador</option>
+                <option value="administrador">Administrador</option>
+            </select>
+        </div>
+
+        @if (role === 'colaborador') {
+        <div class="form-group">
+            <select [(ngModel)]="position" name="position" required>
+                <option value="" disabled selected>Selecciona el tipo de colaborador</option>
+                <option value="Maestro Panadero">Maestro Panadero</option>
+                <option value="Panadero">Panadero</option>
+                <option value="Cajero">Cajero</option>
+                <option value="Repartidor">Repartidor</option>
+                <option value="Ayudante de producción">Ayudante de producción</option>
+                <option value="Limpieza">Limpieza</option>
+                <option value="Empaquetador">Empaquetador</option>
+            </select>
+        </div>
+        }
+
+        <div class="form-group">
+            <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required />
+        </div>
+
+        <button type="submit" class="btn-register">Registrarse</button>
+
+    </form>
+</div>
