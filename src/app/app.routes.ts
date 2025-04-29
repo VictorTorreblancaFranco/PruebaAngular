@@ -8,6 +8,7 @@ import { StockListComponent } from './feature/stock/stock-list/stock-list.compon
 import { RequestFormComponent } from './feature/request/request-form/request-form.component';
 import { RequestListComponent } from './feature/request/request-list/request-list.component';
 import { authGuard } from './auth/services/auth.guard';
+import { AccessDenegadoComponent } from './shared/access-denegado/access-denegado.component';
 
 export const routes: Routes = [
     // CRUDs sin login
@@ -62,8 +63,12 @@ export const routes: Routes = [
 
     // Página de acceso denegado
     {
-        path: 'shared/acceso-denegado',
-        loadComponent: () => import('./shared/acceso-denegado/acceso-denegado.component').then(m => m.AccesoDenegadoComponent)
+        path: 'access-denegado',
+        loadComponent: () =>
+            import('./shared/access-denegado/access-denegado.component').then(
+                m => m.AccessDenegadoComponent // ← ¡Con "D"!
+            ),
+        title: 'Acceso Denegado'
     },
 
     // Redirección base
@@ -71,5 +76,17 @@ export const routes: Routes = [
         path: '',
         redirectTo: 'auth/login',
         pathMatch: 'full'
+    },
+
+    {
+        path: 'admin',
+        loadComponent: () => import('./admin/dashboard/dashboard.component').then(m => m.DashboardComponent),
+        data: { fallback: 'access-denegado' } // Custom data
+    },
+    // Ruta directa para acceso denegado
+    {
+        path: 'access-denegado',
+        component: AccessDenegadoComponent,
+        title: 'Acceso Denegado'
     }
 ];
