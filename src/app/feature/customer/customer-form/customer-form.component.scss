@@ -1,0 +1,263 @@
+/* Variables SCM */
+$scm-primary: #5D4037;
+$scm-secondary: #8D6E63;
+$scm-accent: #FFC107;
+$scm-background: #f5f7fa;
+$scm-card: #ffffff;
+$scm-border: #e0e0e0;
+$scm-text: #212121;
+$scm-success: #4CAF50;
+$scm-error: #f44336;
+$scm-placeholder: #9e9e9e;
+
+/* Estructura principal con scroll */
+.scm-form-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 95vh;
+    background-color: $scm-card;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Cabecera fija */
+.scm-form-header {
+    padding: 1rem 1.5rem;
+    background-color: $scm-primary;
+    color: white;
+    position: relative;
+    flex-shrink: 0;
+
+    h2 {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        font-size: 1.25rem;
+        color: #FFC107;
+        text-align: center;
+
+        mat-icon {
+            margin-right: 10px;
+        }
+    }
+
+    .progress-bar {
+        height: 4px;
+        background-color: rgba(255, 255, 255, 0.2);
+        margin-top: 0.75rem;
+        border-radius: 2px;
+        overflow: hidden;
+
+        .progress-fill {
+            height: 100%;
+            background-color: $scm-accent;
+            transition: width 0.3s ease;
+        }
+    }
+}
+
+/* Contenedor del formulario con scroll */
+.scm-form {
+    padding: 1.5rem;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $scm-background;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $scm-secondary;
+        border-radius: 3px;
+    }
+}
+
+/* Grid del formulario */
+.scm-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.scm-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Elementos del formulario */
+.scm-form-group {
+    margin-bottom: 1.25rem;
+
+    label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: $scm-text;
+
+        mat-icon {
+            font-size: 20px;
+            margin-right: 8px;
+            color: $scm-secondary;
+        }
+    }
+
+    .scm-input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid $scm-border;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background-color: $scm-background;
+
+        &::placeholder {
+            color: $scm-placeholder;
+            opacity: 1;
+            font-style: italic;
+        }
+
+        &:focus {
+            border-color: $scm-primary;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba($scm-primary, 0.1);
+            background-color: white;
+        }
+
+        &:invalid:not(:placeholder-shown) {
+            border-color: $scm-error;
+        }
+    }
+
+    .scm-readonly-field {
+        padding: 0.75rem;
+        background-color: $scm-background;
+        border: 1px solid $scm-border;
+        border-radius: 4px;
+        font-size: 1rem;
+        color: $scm-text;
+    }
+}
+
+/* Barra de acciones fija */
+.scm-form-actions {
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background-color: $scm-card;
+    border-top: 1px solid $scm-border;
+    flex-shrink: 0;
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+/* Estilos para los botones */
+.scm-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.75rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 160px; /* Asegura que los botones tengan un tamaño mínimo */
+    height: 50px; /* Altura fija para consistencia */
+    text-align: center;
+    
+    /* Alineación del contenido dentro del botón */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    mat-icon {
+        margin-right: 10px;
+        font-size: 24px; /* Tamaño aumentado */
+        width: 24px;
+        height: 24px; /* Asegura que el ícono sea cuadrado */
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Modificaciones para el botón primario */
+    &.primary {
+        background-color: $scm-primary;
+        color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            background-color: darken($scm-primary, 8%);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        &:disabled {
+            background-color: lighten($scm-primary, 30%);
+            transform: none;
+            box-shadow: none;
+        }
+    }
+
+    /* Modificaciones para el botón secundario */
+    &.secondary {
+        background-color: white;
+        color: $scm-primary;
+        border: 2px solid $scm-primary;
+
+        &:hover {
+            background-color: rgba($scm-primary, 0.05);
+            transform: translateY(-1px);
+        }
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .scm-form-container {
+        max-height: 90vh;
+    }
+
+    .scm-form-actions {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        align-items: center; /* Centra los botones en pantallas pequeñas */
+    }
+
+    .scm-button {
+        width: 100%; /* Hace que los botones ocupen todo el ancho disponible */
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+
+        mat-icon {
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+    }
+}

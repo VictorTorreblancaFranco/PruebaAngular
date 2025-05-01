@@ -1,0 +1,87 @@
+<div class="scm-form-container">
+    <div class="scm-form-header">
+        <h2><mat-icon>person_add</mat-icon> Registro de Cliente</h2>
+        <div class="progress-bar">
+            <div class="progress-fill" [style.width]="progress + '%'"></div>
+        </div>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #customerForm="ngForm" class="scm-form">
+        <div class="scm-form-grid">
+            <!-- Columna Izquierda -->
+            <div class="scm-form-column">
+                <div class="scm-form-group">
+                    <label for="nombre"><mat-icon>badge</mat-icon> Nombre</label>
+                    <input id="nombre" [(ngModel)]="customer.nombre" name="nombre" class="scm-input" required
+                        maxlength="50" (ngModelChange)="onFieldChange()"
+                        placeholder="Ej: Juan Carlos">
+                </div>
+
+                <div class="scm-form-group">
+                    <label for="documento"><mat-icon>credit_card</mat-icon> Documento</label>
+                    <input id="documento" [(ngModel)]="customer.numero_documento" name="numero_documento"
+                        class="scm-input" required maxlength="15" (ngModelChange)="onFieldChange()"
+                        placeholder="Ej: 12345678A">
+                </div>
+
+                <div class="scm-form-group">
+                    <label for="direccion"><mat-icon>location_on</mat-icon> Dirección</label>
+                    <input id="direccion" [(ngModel)]="customer.direccion" name="direccion" class="scm-input" required
+                        maxlength="200" (ngModelChange)="onFieldChange()"
+                        placeholder="Ej: Av. Principal #123">
+                </div>
+            </div>
+
+            <!-- Columna Derecha -->
+            <div class="scm-form-column">
+                <div class="scm-form-group">
+                    <label for="apellido"><mat-icon>group</mat-icon> Apellido</label>
+                    <input id="apellido" [(ngModel)]="customer.apellido" name="apellido" class="scm-input" required
+                        maxlength="100" (ngModelChange)="onFieldChange()"
+                        placeholder="Ej: Pérez García">
+                </div>
+
+                <div class="scm-form-group">
+                    <label for="telefono"><mat-icon>phone</mat-icon> Teléfono</label>
+                    <input id="telefono" [(ngModel)]="customer.telefono" name="telefono" class="scm-input" required
+                        maxlength="9" (ngModelChange)="onFieldChange()"
+                        placeholder="Ej: 987654321">
+                </div>
+
+                <div class="scm-form-group">
+                    <label for="email"><mat-icon>email</mat-icon> Email</label>
+                    <input id="email" [(ngModel)]="customer.email" name="email" type="email" class="scm-input" required
+                        maxlength="100" (ngModelChange)="onFieldChange()"
+                        placeholder="Ej: cliente@ejemplo.com">
+                </div>
+            </div>
+        </div>
+
+        <!-- Fila inferior -->
+        <div class="scm-form-row">
+            <div class="scm-form-group">
+                <label for="edad"><mat-icon>cake</mat-icon> Edad</label>
+                <input id="edad" [(ngModel)]="customer.edad" name="edad" type="number" class="scm-input" min="0"
+                    required (ngModelChange)="onFieldChange()"
+                    placeholder="Ej: 30">
+            </div>
+
+            <div class="scm-form-group">
+                <label><mat-icon>today</mat-icon> Fecha Registro</label>
+                <div class="scm-readonly-field">
+                    {{ customer.fecha_registro | date:'dd/MM/yyyy HH:mm' }}
+                    <input type="hidden" [(ngModel)]="customer.fecha_registro" name="fecha_registro">
+                </div>
+            </div>
+        </div>
+
+        <div class="scm-form-actions">
+            <button type="submit" class="scm-button primary" [disabled]="!customerForm.form.valid">
+                <mat-icon>save</mat-icon> Guardar Cliente
+            </button>
+            <button type="button" class="scm-button secondary" (click)="resetForm()">
+                <mat-icon>clear</mat-icon> Limpiar
+            </button>
+        </div>
+    </form>
+</div>

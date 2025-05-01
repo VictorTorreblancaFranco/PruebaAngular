@@ -1,0 +1,38 @@
+<div class="sidebar-container">
+    <div class="sidebar-header">
+        <div class="logo-container">
+            <mat-icon class="logo-icon">storefront</mat-icon>
+            <h2 class="app-name">Panadería Jorgito</h2>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav">
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a routerLink="/customer-list" routerLinkActive="active">
+                    <mat-icon class="nav-icon">people</mat-icon>
+                    <span class="nav-text">Lista de Clientes</span>
+                    <mat-icon class="chevron">chevron_right</mat-icon>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/customer-form" routerLinkActive="active">
+                    <mat-icon class="nav-icon">person_add</mat-icon>
+                    <span class="nav-text">Registrar Cliente</span>
+                    <mat-icon class="chevron">chevron_right</mat-icon>
+                </a>
+            </li>
+            <!-- Puedes añadir más elementos aquí -->
+        </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="user-info">
+            <mat-icon class="user-icon">account_circle</mat-icon>
+            <div class="user-details">
+                <span class="user-name">Administrador</span>
+                <span class="user-role">Supervisor</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="customer-list">
+    <h2>Lista de Clientes</h2>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Teléfono</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (customer of customers; track customer.identificador) {
+                <tr>
+                    <td>{{ customer.nombre }}</td>
+                    <td>{{ customer.apellido }}</td>
+                    <td>{{ customer.telefono }}</td>
+                    <td>
+                        <span class="status-badge" [class.active]="customer.estado" [class.inactive]="!customer.estado">
+                            {{ customer.estado ? 'Activo' : 'Inactivo' }}
+                        </span>
+                    </td>
+                    <td class="actions">
+                        <button mat-icon-button color="primary" (click)="viewDetails(customer)"
+                            matTooltip="Ver detalles">
+                            <mat-icon>visibility</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" (click)="editCustomer(customer)" matTooltip="Editar">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="deleteCustomer(customer.identificador)"
+                            matTooltip="Eliminar">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+                }
+                @if (customers.length === 0) {
+                <tr>
+                    <td colspan="5" class="no-records">No hay clientes registrados</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
