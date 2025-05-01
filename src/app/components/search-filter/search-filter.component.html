@@ -1,0 +1,28 @@
+<div class="search-filter-container">
+    <!-- Campo de búsqueda -->
+    <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Buscar</mat-label>
+        <input matInput type="text" [(ngModel)]="searchTerm" (input)="handleSearch()" placeholder="Ej: Juan Pérez">
+        <button matSuffix mat-icon-button (click)="clearSearch()" *ngIf="searchTerm" matTooltip="Limpiar búsqueda">
+            <mat-icon>close</mat-icon>
+        </button>
+        <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+
+    <!-- Campo de filtro -->
+    <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Filtrar</mat-label>
+        <input matInput type="text" [(ngModel)]="filterValue" (input)="handleFilter()" placeholder="Ej: Activos">
+        <button matSuffix mat-icon-button (click)="clearFilters()" *ngIf="filterValue" matTooltip="Limpiar filtro">
+            <mat-icon>close</mat-icon>
+        </button>
+        <mat-icon matPrefix>filter_list</mat-icon>
+    </mat-form-field>
+
+    <!-- Botón para limpiar todo -->
+    <button mat-stroked-button color="warn" (click)="clearAllFilters()" *ngIf="searchTerm || filterValue"
+        class="clear-all-button">
+        <mat-icon>clear_all</mat-icon>
+        Limpiar todo
+    </button>
+</div>

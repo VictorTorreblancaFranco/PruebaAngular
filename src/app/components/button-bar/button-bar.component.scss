@@ -1,47 +1,98 @@
-.button-bar {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 12px 20px;
-    background-color: #34495e;
-    color: white;
-    align-items: center;
+// Usar la variable directamente de Angular Material
+@use '@angular/material' as mat;
 
-    button {
-        padding: 10px 25px;
-        border-radius: 5px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        border: none;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-            opacity: 0.9;
+.search-wrapper {
+    padding: 8px 0 16px;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    
+    .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(4px);
+        border-radius: 24px;
+        padding: 8px 16px;
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        
+        &:hover, &:focus-within {
+            border-color: #64b5f6;  // Azul claro
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        
+        .search-icon {
+            color: #757575;  // Gris medio
+            margin-right: 12px;
+            font-size: 20px;
+        }
+        
+        .search-input {
+            flex-grow: 1;
+            border: none;
+            padding: 6px 0;
+            font-size: 14px;
+            outline: none;
+            background: transparent;
+            color: #424242;  // Gris oscuro
+            
+            &::placeholder {
+                color: #bdbdbd;  // Gris claro
+                font-weight: 300;
+            }
+        }
+        
+        .clear-button {
+            color: #bdbdbd;  // Gris claro
+            margin: 0 8px;
+            transition: all 0.2s ease;
+            
+            &:hover {
+                color: #757575;  // Gris medio
+                background-color: #f5f5f5;  // Gris muy claro
+            }
+            
+            mat-icon {
+                font-size: 18px;
+            }
+        }
+        
+        .filter-button {
+            color: #757575;  // Gris medio
+            margin-left: 8px;
+            transition: all 0.3s ease;
+            
+            &:hover {
+                color: #2196f3;  // Azul Material
+                background-color: #e3f2fd;  // Azul muy claro
+                transform: scale(1.1);
+            }
+            
+            mat-icon {
+                font-size: 20px;
+            }
         }
     }
+}
 
-    .filter-button {
-        background-color: #3498db;
-
-        &:hover {
-            background-color: #2980b9;
-        }
-    }
-
-    .search-button {
-        background-color: #2ecc71;
-
-        &:hover {
-            background-color: #27ae60;
-        }
-    }
-
-    .reset-button {
-        background-color: #e74c3c;
-
-        &:hover {
-            background-color: #c0392b;
+/* Estilos responsivos */
+@media (max-width: 600px) {
+    .search-wrapper {
+        padding: 8px 0;
+        
+        .search-bar {
+            padding: 6px 12px;
+            
+            .search-icon {
+                margin-right: 8px;
+                font-size: 18px;
+            }
+            
+            .search-input {
+                font-size: 13px;
+            }
         }
     }
 }

@@ -32,4 +32,6 @@ export class AppComponent {
   handleReset() {
     console.log('Filtros reiniciados');
   }
+
+  
 }

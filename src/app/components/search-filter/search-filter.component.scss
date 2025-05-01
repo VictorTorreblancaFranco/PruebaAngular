@@ -1,0 +1,47 @@
+@use '@angular/material' as mat;
+
+.search-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background-color: mat.get-color-from-palette(mat.$grey-palette, 50);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+
+    .search-field,
+    .filter-field {
+        flex: 1;
+        min-width: 250px;
+
+        mat-icon[matPrefix] {
+            color: mat.get-color-from-palette(mat.$grey-palette, 500);
+            margin-right: 8px;
+        }
+    }
+
+    .clear-all-button {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        mat-icon {
+            font-size: 18px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .search-filter-container {
+        flex-direction: column;
+        align-items: stretch;
+
+        .clear-all-button {
+            margin-left: 0;
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}

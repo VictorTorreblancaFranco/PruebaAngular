@@ -2,11 +2,10 @@
     display: flex;
     flex-direction: column;
     width: 280px;
-    height: 95vh;
+    height: 96vh;
+    /* Cambiado a 100vh para ocupar toda la altura */
     background: linear-gradient(195deg, #5D4037, #3E2723);
-    /* Café oscuro a más oscuro */
     color: #FFF8E1;
-    /* Texto amarillo claro */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
     position: relative;
@@ -26,7 +25,6 @@
                 width: 32px;
                 height: 32px;
                 color: #FFD700;
-                /* Dorado para el icono */
             }
 
             .app-name {
@@ -35,7 +33,6 @@
                 font-weight: 600;
                 letter-spacing: 0.5px;
                 color: #FFD700;
-                /* Dorado para el nombre */
             }
         }
     }
@@ -58,7 +55,6 @@
                     align-items: center;
                     padding: 12px 16px;
                     color: rgba(255, 248, 225, 0.8);
-                    /* Texto semi-transparente */
                     text-decoration: none;
                     border-radius: 8px;
                     transition: all 0.3s ease;
@@ -67,20 +63,16 @@
 
                     &:hover {
                         background: rgba(255, 248, 225, 0.1);
-                        /* Fondo claro al hacer hover */
                         color: #FFD700;
-                        /* Dorado al hacer hover */
 
                         .nav-icon {
                             transform: scale(1.1);
                             color: #FFD700;
-                            /* Dorado al hacer hover */
                         }
                     }
 
                     &.active {
                         background: #8D6E63;
-                        /* Café medio para activo */
                         color: #FFF8E1;
                         box-shadow: 0 4px 12px rgba(141, 110, 99, 0.3);
 
@@ -92,12 +84,10 @@
                             height: 100%;
                             width: 4px;
                             background: #FFD700;
-                            /* Barra lateral dorada */
                         }
 
                         .nav-icon {
                             color: #FFD700;
-                            /* Dorado para icono activo */
                         }
                     }
 
@@ -108,7 +98,6 @@
                         width: 20px;
                         height: 20px;
                         color: #BCAAA4;
-                        /* Café claro para iconos inactivos */
                     }
 
                     .nav-text {
@@ -139,6 +128,9 @@
     .sidebar-footer {
         padding: 16px;
         border-top: 1px solid rgba(255, 248, 225, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
         .user-info {
             display: flex;
@@ -150,7 +142,6 @@
                 width: 40px;
                 height: 40px;
                 color: #D7CCC8;
-                /* Café muy claro para el icono de usuario */
             }
 
             .user-details {
@@ -161,15 +152,37 @@
                     font-size: 14px;
                     font-weight: 500;
                     color: #FFD700;
-                    /* Dorado para el nombre */
                 }
 
                 .user-role {
                     font-size: 12px;
                     color: rgba(255, 248, 225, 0.6);
-                    /* Texto semi-transparente */
                 }
             }
         }
+
+        .logout-btn {
+            color: #FFD700;
+            transition: all 0.3s ease;
+
+            &:hover {
+                transform: scale(1.1);
+                color: #FF6D00;
+                /* Naranja al hacer hover */
+            }
+
+            mat-icon {
+                font-size: 24px;
+                width: 24px;
+                height: 24px;
+            }
+        }
     }
+}
+
+/* Efecto de tooltip personalizado */
+.mat-mdc-tooltip {
+    background-color: #5D4037 !important;
+    font-size: 12px !important;
+    padding: 8px 12px !important;
 }
