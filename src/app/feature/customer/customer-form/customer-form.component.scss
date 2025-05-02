@@ -10,26 +10,29 @@ $scm-success: #4CAF50;
 $scm-error: #f44336;
 $scm-placeholder: #9e9e9e;
 
-/* Estructura principal con scroll */
+/* Estructura principal sin scroll */
 .scm-form-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    max-height: 95vh;
     background-color: $scm-card;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
     font-family: 'Roboto', sans-serif;
+    
 }
+.titleh2 {
+    font-size: 2rem;
+    color: $scm-primary;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #5D4037;
+}	
 
-/* Cabecera fija */
+/* Cabecera */
 .scm-form-header {
     padding: 1rem 1.5rem;
     background-color: $scm-primary;
     color: white;
-    position: relative;
-    flex-shrink: 0;
 
     h2 {
         margin: 0;
@@ -59,26 +62,11 @@ $scm-placeholder: #9e9e9e;
     }
 }
 
-/* Contenedor del formulario con scroll */
+/* Contenedor del formulario sin scroll */
 .scm-form {
     padding: 1.5rem;
-    flex: 1;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
-
-    &::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: $scm-background;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: $scm-secondary;
-        border-radius: 3px;
-    }
 }
 
 /* Grid del formulario */
@@ -159,16 +147,15 @@ $scm-placeholder: #9e9e9e;
     }
 }
 
-/* Barra de acciones fija */
+/* Barra de acciones */
 .scm-form-actions {
     display: flex;
-    justify-content: center; /* Centra los botones horizontalmente */
+    justify-content: center;
     gap: 1.5rem;
     padding: 1.25rem 1.5rem;
     background-color: $scm-card;
     border-top: 1px solid $scm-border;
-    flex-shrink: 0;
-    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    width: 100%;
 }
 
 /* Estilos para los botones */
@@ -183,27 +170,16 @@ $scm-placeholder: #9e9e9e;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    min-width: 160px; /* Asegura que los botones tengan un tamaño mínimo */
-    height: 50px; /* Altura fija para consistencia */
-    text-align: center;
+    min-width: 150px;
+    height: 50px;
     
-    /* Alineación del contenido dentro del botón */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     mat-icon {
         margin-right: 10px;
-        font-size: 24px; /* Tamaño aumentado */
-        width: 24px;
-        height: 24px; /* Asegura que el ícono sea cuadrado */
-        line-height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        font-size: 24px;
+        width: 45px;
+        height: 24px;
     }
 
-    /* Modificaciones para el botón primario */
     &.primary {
         background-color: $scm-primary;
         color: white;
@@ -222,7 +198,6 @@ $scm-placeholder: #9e9e9e;
         }
     }
 
-    /* Modificaciones para el botón secundario */
     &.secondary {
         background-color: white;
         color: $scm-primary;
@@ -237,19 +212,15 @@ $scm-placeholder: #9e9e9e;
 
 /* Responsive */
 @media (max-width: 480px) {
-    .scm-form-container {
-        max-height: 90vh;
-    }
-
     .scm-form-actions {
         flex-direction: column;
         gap: 1rem;
         padding: 1rem;
-        align-items: center; /* Centra los botones en pantallas pequeñas */
+        align-items: center;
     }
 
     .scm-button {
-        width: 100%; /* Hace que los botones ocupen todo el ancho disponible */
+        width: 100%;
         padding: 0.8rem 1.5rem;
         font-size: 0.95rem;
 
@@ -261,3 +232,22 @@ $scm-placeholder: #9e9e9e;
         }
     }
 }
+
+.scm-input {
+    /* ... otros estilos ... */
+    
+    &::placeholder {
+        color: $scm-placeholder;
+        opacity: 1;
+        font-style: italic;
+        font-size: 0.80rem; /* Tamaño reducido */
+        transition: all 0.2s ease;
+    }
+
+    &:focus::placeholder {
+        font-size: 0.8rem; /* Aún más pequeño al enfocar */
+        opacity: 0.8;
+    }
+}
+
+/* Mantén todos los demás estilos igual */

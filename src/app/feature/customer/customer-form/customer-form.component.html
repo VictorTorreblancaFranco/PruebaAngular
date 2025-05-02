@@ -1,32 +1,43 @@
 <div class="scm-form-container">
-    <div class="scm-form-header">
-        <h2><mat-icon>person_add</mat-icon> Registro de Cliente</h2>
-        <div class="progress-bar">
-            <div class="progress-fill" [style.width]="progress + '%'"></div>
-        </div>
-    </div>
-
-    <form (ngSubmit)="onSubmit()" #customerForm="ngForm" class="scm-form">
+    <!-- ... (encabezado se mantiene igual) ... -->
+<h2 class="titleh2">Registrar cliente</h2>
+    <form (ngSubmit)="onSubmit(customerForm)" #customerForm="ngForm" class="scm-form">
         <div class="scm-form-grid">
             <!-- Columna Izquierda -->
             <div class="scm-form-column">
                 <div class="scm-form-group">
                     <label for="nombre"><mat-icon>badge</mat-icon> Nombre</label>
-                    <input id="nombre" [(ngModel)]="customer.nombre" name="nombre" class="scm-input" required
-                        maxlength="50" (ngModelChange)="onFieldChange()" placeholder="Ingrese su nombre completo">
+                    <input id="nombre" [(ngModel)]="customer.nombre" name="nombre" #nombre="ngModel" class="scm-input" 
+                        required minlength="3" maxlength="50" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+" 
+                        (ngModelChange)="onFieldChange()" placeholder="Ingrese su nombre">
+                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="validation-error">
+                        <div *ngIf="nombre.errors?.['required']">El nombre es requerido</div>
+                        <div *ngIf="nombre.errors?.['minlength']">Mínimo 3 caracteres</div>
+                        <div *ngIf="nombre.errors?.['pattern']">Solo letras y espacios</div>
+                    </div>
                 </div>
 
                 <div class="scm-form-group">
                     <label for="documento"><mat-icon>credit_card</mat-icon> Documento</label>
-                    <input id="documento" [(ngModel)]="customer.numero_documento" name="numero_documento"
-                        class="scm-input" required maxlength="15" (ngModelChange)="onFieldChange()"
-                        placeholder="Ingrese su número de documento">
+                    <input id="documento" [(ngModel)]="customer.numero_documento" name="numero_documento" #documento="ngModel"
+                        class="scm-input" required minlength="8" maxlength="12" pattern="[0-9]+"
+                        (ngModelChange)="onFieldChange()" placeholder="N.º de documento">
+                    <div *ngIf="documento.invalid && (documento.dirty || documento.touched)" class="validation-error">
+                        <div *ngIf="documento.errors?.['required']">El documento es requerido</div>
+                        <div *ngIf="documento.errors?.['minlength']">Mínimo 8 dígitos</div>
+                        <div *ngIf="documento.errors?.['pattern']">Solo números</div>
+                    </div>
                 </div>
 
                 <div class="scm-form-group">
                     <label for="direccion"><mat-icon>location_on</mat-icon> Dirección</label>
-                    <input id="direccion" [(ngModel)]="customer.direccion" name="direccion" class="scm-input" required
-                        maxlength="200" (ngModelChange)="onFieldChange()" placeholder="Ingrese su dirección completa">
+                    <input id="direccion" [(ngModel)]="customer.direccion" name="direccion" #direccion="ngModel"
+                        class="scm-input" required minlength="5" maxlength="200" 
+                        (ngModelChange)="onFieldChange()" placeholder="Ingrese su dirección">
+                    <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="validation-error">
+                        <div *ngIf="direccion.errors?.['required']">La dirección es requerida</div>
+                        <div *ngIf="direccion.errors?.['minlength']">Mínimo 5 caracteres</div>
+                    </div>
                 </div>
             </div>
 
@@ -34,21 +45,37 @@
             <div class="scm-form-column">
                 <div class="scm-form-group">
                     <label for="apellido"><mat-icon>group</mat-icon> Apellido</label>
-                    <input id="apellido" [(ngModel)]="customer.apellido" name="apellido" class="scm-input" required
-                        maxlength="100" (ngModelChange)="onFieldChange()" placeholder="Ingrese su apellido completo">
+                    <input id="apellido" [(ngModel)]="customer.apellido" name="apellido" #apellido="ngModel"
+                        class="scm-input" required minlength="3" maxlength="100" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+"
+                        (ngModelChange)="onFieldChange()" placeholder="Ingrese su apellido">
+                    <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="validation-error">
+                        <div *ngIf="apellido.errors?.['required']">El apellido es requerido</div>
+                        <div *ngIf="apellido.errors?.['minlength']">Mínimo 3 caracteres</div>
+                        <div *ngIf="apellido.errors?.['pattern']">Solo letras y espacios</div>
+                    </div>
                 </div>
 
                 <div class="scm-form-group">
                     <label for="telefono"><mat-icon>phone</mat-icon> Teléfono</label>
-                    <input id="telefono" [(ngModel)]="customer.telefono" name="telefono" class="scm-input" required
-                        maxlength="9" (ngModelChange)="onFieldChange()" placeholder="Ingrese su número de teléfono">
+                    <input id="telefono" [(ngModel)]="customer.telefono" name="telefono" #telefono="ngModel"
+                        class="scm-input" required minlength="9" maxlength="9" pattern="[0-9]+"
+                        (ngModelChange)="onFieldChange()" placeholder="N.º de telefono">
+                    <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="validation-error">
+                        <div *ngIf="telefono.errors?.['required']">El teléfono es requerido</div>
+                        <div *ngIf="telefono.errors?.['minlength'] || telefono.errors?.['maxlength']">Deben ser 9 dígitos</div>
+                        <div *ngIf="telefono.errors?.['pattern']">Solo números</div>
+                    </div>
                 </div>
 
                 <div class="scm-form-group">
                     <label for="email"><mat-icon>email</mat-icon> Email</label>
-                    <input id="email" [(ngModel)]="customer.email" name="email" type="email" class="scm-input" required
-                        maxlength="100" (ngModelChange)="onFieldChange()"
-                        placeholder="Ingrese su dirección de correo electrónico">
+                    <input id="email" [(ngModel)]="customer.email" name="email" #email="ngModel" type="email"
+                        class="scm-input" required maxlength="100" email
+                        (ngModelChange)="onFieldChange()" placeholder="Correo">
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="validation-error">
+                        <div *ngIf="email.errors?.['required']">El email es requerido</div>
+                        <div *ngIf="email.errors?.['email']">Ingrese un email válido</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,21 +84,27 @@
         <div class="scm-form-row">
             <div class="scm-form-group">
                 <label for="edad"><mat-icon>cake</mat-icon> Edad</label>
-                <input id="edad" [(ngModel)]="customer.edad" name="edad" type="number" class="scm-input" min="0"
-                    required (ngModelChange)="onFieldChange()" placeholder="Ingrese su edad">
+                <input id="edad" [(ngModel)]="customer.edad" name="edad" #edad="ngModel" type="number"
+                    class="scm-input" required min="18" max="120"
+                    (ngModelChange)="onFieldChange()" placeholder="Ingrese su edad">
+                <div *ngIf="edad.invalid && (edad.dirty || edad.touched)" class="validation-error">
+                    <div *ngIf="edad.errors?.['required']">La edad es requerida</div>
+                    <div *ngIf="edad.errors?.['min']">Edad mínima: 18 años</div>
+                    <div *ngIf="edad.errors?.['max']">Edad máxima: 120 años</div>
+                </div>
             </div>
 
             <div class="scm-form-group">
                 <label><mat-icon>today</mat-icon> Fecha Registro</label>
                 <div class="scm-readonly-field">
-                    {{ customer.fecha_registro | date:'dd/MM/yyyy HH:mm' }}
+                    {{ customer.fecha_registro | date:'dd/MM/yyyy' }}
                     <input type="hidden" [(ngModel)]="customer.fecha_registro" name="fecha_registro">
                 </div>
             </div>
         </div>
 
         <div class="scm-form-actions">
-            <button type="submit" class="scm-button primary" [disabled]="!customerForm.form.valid">
+            <button type="submit" class="scm-button primary" [disabled]="customerForm.invalid">
                 <mat-icon>save</mat-icon> Guardar Cliente
             </button>
             <button type="button" class="scm-button secondary" (click)="resetForm()">
