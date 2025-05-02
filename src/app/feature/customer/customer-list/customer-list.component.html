@@ -2,8 +2,8 @@
     <mat-card class="customer-card">
         <div class="header-section">
             <h2 class="title">Gestión de Clientes</h2>
-            <app-button-bar (onSearch)="handleSearch($event)" (onFilter)="handleFilter()" (onClear)="handleClear()">
-            </app-button-bar>
+            <app-search-filter (searchChange)="handleSearch($event)" (filterChange)="handleFilter($event)" (clearAll)="handleClear()">
+            </app-search-filter>
         </div>
 
         <div class="table-responsive">
@@ -13,7 +13,6 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Teléfono</th>
-                        <th>Email</th>
                         <th>Estado</th>
                         <th class="actions-header">Acciones</th>
                     </tr>
@@ -23,10 +22,8 @@
                         <td>{{ customer.nombre }}</td>
                         <td>{{ customer.apellido }}</td>
                         <td>{{ customer.telefono }}</td>
-                        <td class="email-cell">{{ customer.email }}</td>
                         <td>
-                            <span class="status-badge" [class.active]="customer.estado"
-                                [class.inactive]="!customer.estado">
+                            <span class="status-badge" [class.active]="customer.estado" [class.inactive]="!customer.estado">
                                 {{ customer.estado ? 'Activo' : 'Inactivo' }}
                             </span>
                         </td>
@@ -48,7 +45,7 @@
 
                     <!-- Mensaje cuando no hay resultados -->
                     <tr *ngIf="filteredCustomers.length === 0" class="no-results-row">
-                        <td colspan="6">
+                        <td colspan="5">
                             <div class="no-results-message">
                                 <mat-icon>search_off</mat-icon>
                                 <span>No se encontraron clientes</span>

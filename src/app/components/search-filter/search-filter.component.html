@@ -1,28 +1,40 @@
-<div class="search-filter-container">
+<div class="search-container">
     <!-- Campo de búsqueda -->
     <mat-form-field appearance="outline" class="search-field">
-        <mat-label>Buscar</mat-label>
-        <input matInput type="text" [(ngModel)]="searchTerm" (input)="handleSearch()" placeholder="Ej: Juan Pérez">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput type="text" [(ngModel)]="searchTerm" (input)="handleSearch()" placeholder="Buscar cliente...">
         <button matSuffix mat-icon-button (click)="clearSearch()" *ngIf="searchTerm" matTooltip="Limpiar búsqueda">
             <mat-icon>close</mat-icon>
         </button>
-        <mat-icon matPrefix>search</mat-icon>
     </mat-form-field>
 
-    <!-- Campo de filtro -->
-    <mat-form-field appearance="outline" class="filter-field">
-        <mat-label>Filtrar</mat-label>
-        <input matInput type="text" [(ngModel)]="filterValue" (input)="handleFilter()" placeholder="Ej: Activos">
-        <button matSuffix mat-icon-button (click)="clearFilters()" *ngIf="filterValue" matTooltip="Limpiar filtro">
-            <mat-icon>close</mat-icon>
+    <!-- Botón de filtrar con menú -->
+    <button mat-stroked-button [matMenuTriggerFor]="filterMenu" class="filter-button">
+        <mat-icon>filter_list</mat-icon>
+        <span>{{getFilterText()}}</span>
+    </button>
+
+    <mat-menu #filterMenu="matMenu" class="filter-menu">
+        <button mat-menu-item (click)="applyFilter('todos')">
+            <mat-icon>list</mat-icon>
+            <span>Todos</span>
+            <mat-icon *ngIf="filterValue === 'todos'" class="check-icon">check</mat-icon>
         </button>
-        <mat-icon matPrefix>filter_list</mat-icon>
-    </mat-form-field>
+        <button mat-menu-item (click)="applyFilter('activo')">
+            <mat-icon>check_circle</mat-icon>
+            <span>Activos</span>
+            <mat-icon *ngIf="filterValue === 'activo'" class="check-icon">check</mat-icon>
+        </button>
+        <button mat-menu-item (click)="applyFilter('inactivo')">
+            <mat-icon>cancel</mat-icon>
+            <span>Inactivos</span>
+            <mat-icon *ngIf="filterValue === 'inactivo'" class="check-icon">check</mat-icon>
+        </button>
+    </mat-menu>
 
-    <!-- Botón para limpiar todo -->
-    <button mat-stroked-button color="warn" (click)="clearAllFilters()" *ngIf="searchTerm || filterValue"
-        class="clear-all-button">
+    <!-- Botón limpiar siempre visible -->
+    <button mat-stroked-button color="warn" (click)="clearAllFilters()" class="clear-button">
         <mat-icon>clear_all</mat-icon>
-        Limpiar todo
+        <span>Limpiar todo</span>
     </button>
 </div>
