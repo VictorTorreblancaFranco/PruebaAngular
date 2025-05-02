@@ -1,4 +1,4 @@
-<div class="sidebar-container">
+<div class="sidebar-container" [class.expanded]="isExpanded">
     <div class="sidebar-header">
         <div class="logo-container">
             <mat-icon class="logo-icon">storefront</mat-icon>
@@ -22,7 +22,6 @@
                     <mat-icon class="chevron">chevron_right</mat-icon>
                 </a>
             </li>
-            <!-- Sección adicional recomendada -->
             <li class="nav-item">
                 <a routerLink="/products" routerLinkActive="active">
                     <mat-icon class="nav-icon">shopping_basket</mat-icon>
@@ -48,7 +47,6 @@
                 <span class="user-role">Supervisor</span>
             </div>
         </div>
-        <!-- Botón de cerrar sesión -->
         <button mat-icon-button class="logout-btn" (click)="logout()" matTooltip="Cerrar sesión">
             <mat-icon>logout</mat-icon>
         </button>

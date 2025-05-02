@@ -2,18 +2,26 @@
     display: flex;
     flex-direction: column;
     width: 280px;
-    height: 96vh;
-    /* Cambiado a 100vh para ocupar toda la altura */
+    height: 100vh;
     background: linear-gradient(195deg, #5D4037, #3E2723);
     color: #FFF8E1;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    right: -240px; /* Cambiado de left a right */
+    top: 0;
+    z-index: 1000;
     transition: all 0.3s ease;
-    position: relative;
-    z-index: 10;
+    overflow: hidden;
+
+    &:hover, &.expanded {
+        right: 0; /* Cambiado de left a right */
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    }
 
     .sidebar-header {
         padding: 24px 16px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        white-space: nowrap;
 
         .logo-container {
             display: flex;
@@ -60,6 +68,7 @@
                     transition: all 0.3s ease;
                     position: relative;
                     overflow: hidden;
+                    white-space: nowrap;
 
                     &:hover {
                         background: rgba(255, 248, 225, 0.1);
@@ -131,6 +140,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        white-space: nowrap;
 
         .user-info {
             display: flex;
@@ -168,7 +178,6 @@
             &:hover {
                 transform: scale(1.1);
                 color: #FF6D00;
-                /* Naranja al hacer hover */
             }
 
             mat-icon {
@@ -180,9 +189,16 @@
     }
 }
 
-/* Efecto de tooltip personalizado */
+/* Tooltip personalizado */
 .mat-mdc-tooltip {
     background-color: #5D4037 !important;
     font-size: 12px !important;
     padding: 8px 12px !important;
+}
+
+/* Asegurar que el contenido principal no se esconda */
+:host {
+    display: block;
+    position: relative;
+    z-index: 1;
 }
