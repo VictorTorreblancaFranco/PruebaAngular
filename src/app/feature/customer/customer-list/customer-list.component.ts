@@ -4,7 +4,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
 import { SearchFilterComponent } from '../../../components/search-filter/search-filter.component';
+import { CustomerDetailsComponent } from '../customer-details/customer-details.component';
+import { CustomerService } from '../../../core/services/customer.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -36,18 +39,21 @@ export class CustomerListComponent {
       telefono: '987654322',
       estado: false
     }
-    // Puedes agregar más clientes aquí...
   ];
 
   filteredCustomers = [...this.customers];
   searchTerm = '';
   filterValue = '';
 
+  constructor(
+    private dialog: MatDialog,
+    private customerService: CustomerService
+  ) {}
+
   trackByIdentificador(index: number, customer: any): number {
     return customer.identificador;
   }
 
-  // Función para manejar la búsqueda
   handleSearch(term: string): void {
     this.searchTerm = term.toLowerCase();
     this.filteredCustomers = this.customers.filter(c => 
@@ -57,38 +63,39 @@ export class CustomerListComponent {
     );
   }
 
-  // Función para manejar filtros
   handleFilter(filterValue: string): void {
     this.filterValue = filterValue;
-
     if (this.filterValue === 'activo') {
-      this.filteredCustomers = this.customers.filter(c => c.estado === true);
+      this.filteredCustomers = this.customers.filter(c => c.estado);
     } else if (this.filterValue === 'inactivo') {
-      this.filteredCustomers = this.customers.filter(c => c.estado === false);
+      this.filteredCustomers = this.customers.filter(c => !c.estado);
     } else {
-      this.filteredCustomers = [...this.customers]; // Restablecer si el filtro es "todos"
+      this.filteredCustomers = [...this.customers];
     }
   }
 
-  // Función para limpiar la búsqueda
   handleClear(): void {
     this.searchTerm = '';
+    this.filterValue = '';
     this.filteredCustomers = [...this.customers];
   }
 
-  // Función para ver detalles de un cliente
-  viewDetails(customer: any): void {
-    console.log('Ver detalles de:', customer);
+  openDetailsDialog(customerId: number): void {
+    const customer = this.customers.find(c => c.identificador === customerId);
+    if (customer) {
+      this.dialog.open(CustomerDetailsComponent, {
+        width: '800px',
+        data: customer
+      });
+    }
   }
 
-  // Función para editar un cliente
-  editCustomer(customer: any): void {
-    console.log('Editar:', customer);
-  }
-
-  // Función para eliminar un cliente
   deleteCustomer(id: number): void {
-    this.customers = this.customers.filter(c => c.identificador !== id);
-    this.filteredCustomers = this.filteredCustomers.filter(c => c.identificador !== id);
-  }
+    if (confirm('¿Estás seguro de eliminar este cliente?')) {
+      this.customerService.softDeleteCustomer(id).subscribe(() => {
+        this.customers = this.customers.filter(c => c.identificador !== id);
+        this.filteredCustomers = this.filteredCustomers.filter(c => c.identificador !== id);
+      });
+    }
+  }   
 }

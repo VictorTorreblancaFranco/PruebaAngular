@@ -1,0 +1,103 @@
+<h2 mat-dialog-title>{{ isEditing ? 'Editar Cliente' : 'Detalles del Cliente' }}</h2>
+
+<mat-dialog-content>
+    <form *ngIf="isEditing; else viewMode" class="edit-form">
+        <div class="form-grid">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput [(ngModel)]="editedCustomer.nombre" name="nombre" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Apellido</mat-label>
+                <input matInput [(ngModel)]="editedCustomer.apellido" name="apellido" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Documento</mat-label>
+                <input matInput [(ngModel)]="editedCustomer.numero_documento" name="numero_documento" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Teléfono</mat-label>
+                <input matInput [(ngModel)]="editedCustomer.telefono" name="telefono" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Dirección</mat-label>
+                <input matInput [(ngModel)]="editedCustomer.direccion" name="direccion" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]="editedCustomer.email" name="email" type="email" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Edad</mat-label>
+                <input matInput [(ngModel)]="editedCustomer.edad" name="edad" type="number" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Estado</mat-label>
+                <mat-select [(ngModel)]="editedCustomer.estado" name="estado" required>
+                    <mat-option [value]="true">Activo</mat-option>
+                    <mat-option [value]="false">Inactivo</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+
+    <ng-template #viewMode>
+        <div class="details-grid">
+            <div class="detail-item">
+                <span class="detail-label">Nombre:</span>
+                <span class="detail-value">{{ data.nombre }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Apellido:</span>
+                <span class="detail-value">{{ data.apellido }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Documento:</span>
+                <span class="detail-value">{{ data.numero_documento }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Teléfono:</span>
+                <span class="detail-value">{{ data.telefono }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Dirección:</span>
+                <span class="detail-value">{{ data.direccion }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Email:</span>
+                <span class="detail-value">{{ data.email }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Edad:</span>
+                <span class="detail-value">{{ data.edad }}</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Estado:</span>
+                <span class="detail-value" [class.active]="data.estado" [class.inactive]="!data.estado">
+                    {{ data.estado ? 'Activo' : 'Inactivo' }}
+                </span>
+            </div>
+        </div>
+    </ng-template>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="toggleEdit()" color="primary">
+        <mat-icon>{{ isEditing ? 'cancel' : 'edit' }}</mat-icon>
+        {{ isEditing ? 'Cancelar' : 'Editar' }}
+    </button>
+
+    <button *ngIf="isEditing" mat-button (click)="saveChanges()" color="primary"
+        [disabled]="!editedCustomer.nombre || !editedCustomer.apellido">
+        <mat-icon>save</mat-icon> Guardar
+    </button>
+
+    <button mat-button mat-dialog-close color="warn">Cerrar</button>
+</mat-dialog-actions>

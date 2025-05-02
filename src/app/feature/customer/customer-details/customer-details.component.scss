@@ -1,0 +1,62 @@
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.detail-label {
+    font-weight: 500;
+    color: #5D4037;
+    min-width: 100px;
+}
+
+.detail-value {
+    color: #212121;
+}
+
+.active {
+    color: green;
+}
+
+.inactive {
+    color: red;
+}
+
+.edit-form {
+    padding: 1rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-dialog-actions {
+    border-top: 1px solid #e0e0e0;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.status-badge {
+    &.active {
+        color: green;
+        font-weight: 500;
+    }
+
+    &.inactive {
+        color: red;
+        font-weight: 500;
+    }
+}

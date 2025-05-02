@@ -30,13 +30,9 @@
                             </span>
                         </td>
                         <td class="actions" data-label="Acciones">
-                            <button mat-icon-button color="primary" (click)="viewDetails(customer)"
+                            <button mat-icon-button color="primary" (click)="openDetailsDialog(customer.identificador)"
                                 matTooltip="Ver detalles" aria-label="Ver detalles">
                                 <mat-icon>visibility</mat-icon>
-                            </button>
-                            <button mat-icon-button color="accent" (click)="editCustomer(customer)" matTooltip="Editar"
-                                aria-label="Editar">
-                                <mat-icon>edit</mat-icon>
                             </button>
                             <button mat-icon-button color="warn" (click)="deleteCustomer(customer.identificador)"
                                 matTooltip="Eliminar" aria-label="Eliminar">
