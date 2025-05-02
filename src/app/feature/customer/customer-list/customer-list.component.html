@@ -2,7 +2,8 @@
     <mat-card class="customer-card">
         <div class="header-section">
             <h2 class="title">Gestión de Clientes</h2>
-            <app-search-filter (searchChange)="handleSearch($event)" (filterChange)="handleFilter($event)" (clearAll)="handleClear()">
+            <app-search-filter (searchChange)="handleSearch($event)" (filterChange)="handleFilter($event)"
+                (clearAll)="handleClear()">
             </app-search-filter>
         </div>
 
@@ -19,15 +20,16 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let customer of filteredCustomers; trackBy: trackByIdentificador" class="customer-row">
-                        <td>{{ customer.nombre }}</td>
-                        <td>{{ customer.apellido }}</td>
-                        <td>{{ customer.telefono }}</td>
-                        <td>
-                            <span class="status-badge" [class.active]="customer.estado" [class.inactive]="!customer.estado">
+                        <td data-label="Nombre">{{ customer.nombre }}</td>
+                        <td data-label="Apellido">{{ customer.apellido }}</td>
+                        <td data-label="Teléfono">{{ customer.telefono }}</td>
+                        <td data-label="Estado">
+                            <span class="status-badge" [class.active]="customer.estado"
+                                [class.inactive]="!customer.estado">
                                 {{ customer.estado ? 'Activo' : 'Inactivo' }}
                             </span>
                         </td>
-                        <td class="actions">
+                        <td class="actions" data-label="Acciones">
                             <button mat-icon-button color="primary" (click)="viewDetails(customer)"
                                 matTooltip="Ver detalles" aria-label="Ver detalles">
                                 <mat-icon>visibility</mat-icon>
@@ -43,7 +45,6 @@
                         </td>
                     </tr>
 
-                    <!-- Mensaje cuando no hay resultados -->
                     <tr *ngIf="filteredCustomers.length === 0" class="no-results-row">
                         <td colspan="5">
                             <div class="no-results-message">
