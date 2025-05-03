@@ -41,8 +41,13 @@
     </nav>
 
     <div class="sidebar-footer">
+        <!-- Debug info -->
+        <div *ngIf="authService.currentUser() as user" style="display: none;">
+            User: {{user | json}} | Role: {{user.role}} | Icon: {{getRoleIcon()}}
+        </div>
+
         <div class="user-info">
-            <mat-icon class="user-icon">account_circle</mat-icon>
+            <mat-icon class="user-icon">{{getRoleIcon()}}</mat-icon>
             <div class="user-details">
                 <span class="user-name">{{authService.currentUser()?.name || 'Invitado'}}</span>
                 <span class="user-role">{{authService.currentUser()?.role || 'No autenticado'}}</span>

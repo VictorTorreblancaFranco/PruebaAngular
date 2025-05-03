@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../../core/services/auth.service';  // Asegúrate de importar correctamente el servicio
+import { AuthService } from '../../../core/services/auth.service'; // Asegúrate de importar correctamente el servicio
 
 @Component({
   selector: 'app-sidebar',
@@ -41,4 +41,24 @@ export class SidebarComponent {
   get isAdmin(): boolean {
     return this.authService.currentUser()?.role === 'admin';  // Verifica si el usuario es admin
   }
+
+  // Método agregado para obtener el ícono según el rol del usuario
+  // src/app/layout/sidebar/sidebar.component.ts
+getRoleIcon(): string {
+  const user = this.authService.currentUser();
+  if (!user) return 'person'; // Ícono por defecto si no hay usuario
+
+  switch(user.role) {
+    case 'admin':
+      return 'admin_panel_settings';
+    case 'panadero':
+      return 'bakery_dining'; 
+    case 'cajero':
+      return 'point_of_sale';
+    case 'cliente':
+      return 'person'; // O usa 'shopping_cart' para clientes
+    default:
+      return 'person';
+  }
+}
 }
