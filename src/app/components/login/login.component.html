@@ -1,39 +1,42 @@
 <div class="login-container">
     <mat-card class="login-card">
-        <mat-card-header>
-            <mat-card-title>Panadería Jorgito</mat-card-title>
-            <mat-card-subtitle>Iniciar sesión</mat-card-subtitle>
-        </mat-card-header>
+        <div class="login-header">
+            <h2 class="login-title">Panadería Jorgito</h2>
+            <p class="login-subtitle">Iniciar sesión</p>
+        </div>
 
-        <mat-card-content>
-            <form (ngSubmit)="login()" #loginForm="ngForm">
-                <mat-form-field appearance="outline">
-                    <mat-label>Email</mat-label>
-                    <input matInput type="email" name="email" [(ngModel)]="credentials().email" required />
-                    <mat-icon matSuffix>email</mat-icon>
-                </mat-form-field>
+        <form (ngSubmit)="login()" class="login-form">
+            <!-- Email Field -->
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]="credentials().email" name="email" type="email" required />
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
 
-                <mat-form-field appearance="outline">
-                    <mat-label>Contraseña</mat-label>
-                    <input matInput type="password" name="password" [(ngModel)]="credentials().password" required />
-                    <mat-icon matSuffix>lock</mat-icon>
-                </mat-form-field>
-
-                @if (errorMessage()) {
-                <div class="error-message">
-                    {{ errorMessage() }}
-                </div>
-                }
-
-                <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid || isLoading()"
-                    class="login-button">
-                    @if (isLoading()) {
-                    <mat-spinner diameter="24" color="accent"></mat-spinner>
-                    } @else {
-                    <span>Ingresar</span>
-                    }
+            <!-- Password Field -->
+            <mat-form-field appearance="outline" class="form-field">
+                <mat-label>Contraseña</mat-label>
+                <input matInput [(ngModel)]="credentials().password" name="password"
+                    [type]="hidePassword() ? 'password' : 'text'" required />
+                <button type="button" mat-icon-button matSuffix (click)="togglePasswordVisibility()"
+                    [attr.aria-label]="hidePassword() ? 'Mostrar contraseña' : 'Ocultar contraseña'">
+                    <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
                 </button>
-            </form>
-        </mat-card-content>
+            </mat-form-field>
+
+            <!-- Error Message -->
+            <div *ngIf="errorMessage()" class="error-message">
+                <mat-icon>error</mat-icon>
+                <span>{{ errorMessage() }}</span>
+            </div>
+
+            <!-- Login Button -->
+            <button mat-raised-button color="primary" class="login-button" [disabled]="isLoading()" type="submit">
+                <span *ngIf="isLoading()" class="spinner-container">
+                    <mat-spinner diameter="20"></mat-spinner>
+                </span>
+                <span *ngIf="!isLoading()">Ingresar</span>
+            </button>
+        </form>
     </mat-card>
 </div>

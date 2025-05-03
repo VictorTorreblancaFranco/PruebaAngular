@@ -1,4 +1,3 @@
-// src/app/components/core/login/login.component.ts
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -7,7 +6,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AuthService } from '../../core/services/auth.service';  // Cambié la ruta aquí para usar 'shared/services'
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,18 +19,18 @@ import { AuthService } from '../../core/services/auth.service';  // Cambié la r
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatProgressSpinner
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  credentials = signal({
-    email: '',
-    password: ''
-  });
+  credentials = signal<{ email: string; password: string }>({ email: '', password: '' });
   isLoading = signal(false);
   errorMessage = signal('');
+  hidePassword = signal(true);
 
   constructor(
     private authService: AuthService,
@@ -37,17 +38,30 @@ export class LoginComponent {
   ) { }
 
   login(): void {
+    if (this.isLoading()) return;
+
     this.isLoading.set(true);
     this.errorMessage.set('');
 
     setTimeout(() => {
       const { email, password } = this.credentials();
-      if (this.authService.login(email, password)) {
-        this.router.navigate(['/']);
-      } else {
-        this.errorMessage.set('Credenciales incorrectas. Prueba con: admin@panaderia.com / admin123');
+
+      try {
+        if (this.authService.login(email, password)) {
+          this.router.navigate(['/']);
+        } else {
+          this.errorMessage.set('Credenciales incorrectas. Prueba con: admin@panaderia.com / admin123');
+        }
+      } catch (error) {
+        this.errorMessage.set('Error al iniciar sesión. Intenta nuevamente.');
+        console.error('Login error:', error);
+      } finally {
+        this.isLoading.set(false);
       }
-      this.isLoading.set(false);
-    }, 1000);
+    }, 800);
+  }
+
+  togglePasswordVisibility(): void {
+    this.hidePassword.set(!this.hidePassword());
   }
 }
