@@ -13,9 +13,9 @@
     @at-root {
         .with-background-image & {
             background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                            url('/assets/images/fondoprueba1.jpg');
+                            url('/public/images/fondoprueba1.jpg');
         }
-    }
+    }d
 
     .login-card {
         width: 100%;
@@ -164,7 +164,7 @@
         @at-root {
             .with-background-image & {
                 background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
-                                url('/assets/images/fondoprueba1.jpg');
+                                url('/public/images/fondoprueba1.jpg');
             }
         }
 

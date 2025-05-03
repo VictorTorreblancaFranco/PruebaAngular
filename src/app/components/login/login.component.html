@@ -2,7 +2,7 @@
     <mat-card class="login-card">
         <div class="login-header">
             <h2 class="login-title">Panadería Jorgito</h2>
-            <p class="login-subtitle">Iniciar sesión</p>
+            <p class="login-subtitle">Bienvenido</p>
         </div>
 
         <form (ngSubmit)="login()" class="login-form">
@@ -35,7 +35,7 @@
                 <span *ngIf="isLoading()" class="spinner-container">
                     <mat-spinner diameter="20"></mat-spinner>
                 </span>
-                <span *ngIf="!isLoading()">Ingresar</span>
+                <span *ngIf="!isLoading()">Iniciar sesión</span>
             </button>
         </form>
     </mat-card>
