@@ -1,0 +1,39 @@
+<div class="login-container">
+    <mat-card class="login-card">
+        <mat-card-header>
+            <mat-card-title>Panadería Jorgito</mat-card-title>
+            <mat-card-subtitle>Iniciar sesión</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form (ngSubmit)="login()" #loginForm="ngForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" name="email" [(ngModel)]="credentials().email" required />
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput type="password" name="password" [(ngModel)]="credentials().password" required />
+                    <mat-icon matSuffix>lock</mat-icon>
+                </mat-form-field>
+
+                @if (errorMessage()) {
+                <div class="error-message">
+                    {{ errorMessage() }}
+                </div>
+                }
+
+                <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid || isLoading()"
+                    class="login-button">
+                    @if (isLoading()) {
+                    <mat-spinner diameter="24" color="accent"></mat-spinner>
+                    } @else {
+                    <span>Ingresar</span>
+                    }
+                </button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

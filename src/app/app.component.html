@@ -1,5 +1,5 @@
-<!-- app.component.html -->
 <div class="app-container">
+  @if (authService.isAuthenticated()) {
   <div class="main-grid">
     <!-- Columna izquierda - Formulario de registro -->
     <div class="form-column">
@@ -10,17 +10,15 @@
 
     <!-- Columna central - Lista de clientes -->
     <div class="list-column">
-
       <div class="list-container">
         <app-customer-list></app-customer-list>
       </div>
     </div>
 
     <!-- Columna derecha - Sidebar -->
-
-
-        <app-sidebar></app-sidebar>
-
-
+    <app-sidebar></app-sidebar>
   </div>
+  } @else {
+  <app-login></app-login>
+  }
 </div>

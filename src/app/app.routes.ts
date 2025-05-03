@@ -1,26 +1,28 @@
+// src/app/app.routes.ts
 import { Routes } from '@angular/router';
-
-
-//new import
-import { CustomerFormComponent } from './feature/customer/customer-form/customer-form.component';
-import { CustomerListComponent } from './feature/customer/customer-list/customer-list.component';
-
+import { authGuard } from '../app/core/services/auth.guard';
+import { LayoutComponent } from '../app/layout/layout/layout.component'; // Importamos el LayoutComponent
 
 export const routes: Routes = [
-    
     {
-        path: 'customer-form',
-        component: CustomerFormComponent
-    },
-    {
-        path: 'customer-list',
-        component: CustomerListComponent
+        path: 'login',
+        loadComponent: () => import('../app/components/login/login.component').then(m => m.LoginComponent)
     },
     {
         path: '',
-        pathMatch: 'full',
-        redirectTo: 'customer-form'
-    }
+        component: LayoutComponent,  // Cargamos el LayoutComponent
+        canActivate: [authGuard],    // Protegemos la ruta con el AuthGuard
+        children: [
+            {
+                path: 'customer-form',
+                loadComponent: () => import('./feature/customer/customer-form/customer-form.component').then(m => m.CustomerFormComponent)
+            },
+            {
+                path: 'customer-list',
+                loadComponent: () => import('./feature/customer/customer-list/customer-list.component').then(m => m.CustomerListComponent)
+            },
+            // Otras rutas principales van aquí
+        ]
+    },
+    { path: '**', redirectTo: 'login' }
 ];
-
-

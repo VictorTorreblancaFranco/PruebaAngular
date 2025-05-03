@@ -1,9 +1,11 @@
-import { Component, HostListener } from '@angular/core';
+// src/app/layout/sidebar/sidebar.component.ts
+import { Component, HostListener, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../core/services/auth.service';  // Asegúrate de importar correctamente el servicio
 
 @Component({
   selector: 'app-sidebar',
@@ -20,6 +22,7 @@ import { CommonModule } from '@angular/common';
 })
 export class SidebarComponent {
   isExpanded = false;
+  authService = inject(AuthService);  // Inyecta el servicio de autenticación
 
   @HostListener('mouseenter')
   onMouseEnter() {
@@ -31,11 +34,11 @@ export class SidebarComponent {
     this.isExpanded = false;
   }
 
-  logout() {
-    console.log('Cerrando sesión...');
+  logout(): void {
+    this.authService.logout();  // Llama al logout del servicio
   }
 
   get isAdmin(): boolean {
-    return true;
+    return this.authService.currentUser()?.role === 'admin';  // Verifica si el usuario es admin
   }
 }
