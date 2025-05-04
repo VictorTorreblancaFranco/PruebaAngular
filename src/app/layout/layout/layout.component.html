@@ -1,5 +1,6 @@
-<!-- src/app/layout/layout.component.html -->
 <div class="layout-container">
-    <app-sidebar></app-sidebar> <!-- Sidebar -->
-
+    <app-sidebar></app-sidebar>
+    <main class="main-content">
+        <router-outlet></router-outlet> <!-- Aquí se renderizarán los componentes hijos -->
+    </main>
 </div>

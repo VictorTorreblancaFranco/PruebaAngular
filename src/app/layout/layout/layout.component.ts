@@ -1,15 +1,20 @@
-// src/app/layout/layout.component.ts
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';  // Importa CommonModule para 'router-outlet'
-import { SidebarComponent } from '../sidebar/sidebar/sidebar.component';  // Importa SidebarComponent desde la ruta correcta
+import { CommonModule } from '@angular/common';
+import { SidebarComponent } from '../sidebar/sidebar/sidebar.component';
+import { RouterModule, RouterOutlet } from '@angular/router'; // Añade RouterOutlet
 
 @Component({
   selector: 'app-layout',
-  templateUrl: './layout.component.html',  // Ruta correcta a tu archivo de plantilla
+  templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
-  standalone: true,  // Este es un componente standalone
-  imports: [CommonModule, SidebarComponent]  // Asegúrate de agregar CommonModule y SidebarComponent a imports
+  standalone: true,
+  imports: [
+    CommonModule,
+    SidebarComponent,
+    RouterModule,  // Añade RouterModule
+    RouterOutlet   // Añade RouterOutlet explícitamente
+  ]
 })
 export class LayoutComponent {
-  // Lógica opcional para tu layout
+  // Lógica del componente
 }

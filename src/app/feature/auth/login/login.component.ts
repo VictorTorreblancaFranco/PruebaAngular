@@ -7,7 +7,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
@@ -20,14 +19,16 @@ import { AuthService } from '../../../core/services/auth.service';
     MatInputModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatIconModule,
-    MatProgressSpinner
+    MatIconModule
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  credentials = signal<{ email: string; password: string }>({ email: '', password: '' });
+  credentials = signal({
+    email: '',
+    password: ''
+  });
   isLoading = signal(false);
   errorMessage = signal('');
   hidePassword = signal(true);
@@ -43,25 +44,18 @@ export class LoginComponent {
     this.isLoading.set(true);
     this.errorMessage.set('');
 
-    setTimeout(() => {
-      const { email, password } = this.credentials();
+    const { email, password } = this.credentials();
 
-      try {
-        if (this.authService.login(email, password)) {
-          this.router.navigate(['/']);
-        } else {
-          this.errorMessage.set('Credenciales incorrectas. Prueba con: admin@panaderia.com / admin123');
-        }
-      } catch (error) {
-        this.errorMessage.set('Error al iniciar sesión. Intenta nuevamente.');
-        console.error('Login error:', error);
-      } finally {
-        this.isLoading.set(false);
-      }
-    }, 800);
+    if (this.authService.login(email, password)) {
+      // La redirección se maneja en el AuthService
+    } else {
+      this.errorMessage.set('Credenciales incorrectas. Intenta con: admin@panaderia.com / admin123');
+    }
+
+    this.isLoading.set(false);
   }
 
   togglePasswordVisibility(): void {
-    this.hidePassword.set(!this.hidePassword());
+    this.hidePassword.update(value => !value);
   }
 }

@@ -1,0 +1,18 @@
+<div class="main-menu-container">
+    <h1>Bienvenido, {{ userName() }}</h1>
+
+    <mat-spinner *ngIf="isLoading()" diameter="50" class="loading-spinner"></mat-spinner>
+
+    <div *ngIf="!isLoading()" class="cards-grid">
+        <mat-card *ngFor="let card of menuCards()" [routerLink]="card.route" class="menu-card"
+            [style.border-top]="'4px solid ' + card.color">
+            <mat-card-header>
+                <mat-icon mat-card-avatar [style.color]="card.color">{{ card.icon }}</mat-icon>
+                <mat-card-title>{{ card.title }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>{{ card.description }}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -1,14 +1,21 @@
-// src/app/shared/guards/auth.guard.ts
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn, Router, UrlTree } from '@angular/router';
 import { inject } from '@angular/core';
-import { AuthService } from '../services/auth.service';  // Cambié la ruta a 'services' según tu estructura
+import { AuthService } from '../services/auth.service';
+import { map, catchError, of } from 'rxjs';
 
-export const authGuard: CanActivateFn = () => {
+export const authGuard: CanActivateFn = (): boolean | UrlTree => {
     const authService = inject(AuthService);
     const router = inject(Router);
 
-    if (authService.isAuthenticated()) {
-        return true;
+    // Verificación sincrónica básica
+    if (!authService.isAuthenticated()) {
+        return router.createUrlTree(['/login'], {
+            queryParams: {
+                redirectTo: router.url,
+                reason: 'not_authenticated'
+            }
+        });
     }
-    return router.createUrlTree(['/login']);
+
+    return true;
 };

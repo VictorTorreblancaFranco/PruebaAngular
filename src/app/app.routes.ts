@@ -1,31 +1,46 @@
-// src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { authGuard } from '../app/core/services/auth.guard';
-import { LayoutComponent } from '../app/layout/layout/layout.component'; // Importamos el LayoutComponent
-import { RegisterComponent } from './feature/auth/register/register.component';
+import { authGuard } from './core/services/auth.guard';
+import { LayoutComponent } from './layout/layout/layout.component';
 
+// Exporta las rutas como constante
 export const routes: Routes = [
-
-    { path: 'register', component: RegisterComponent },
     {
         path: 'login',
-        loadComponent: () => import('../app/feature/auth/login/login.component').then(m => m.LoginComponent)
+        loadComponent: () => import('./feature/auth/login/login.component').then(m => m.LoginComponent),
+        title: 'Login'
     },
     {
         path: '',
-        component: LayoutComponent,  // Cargamos el LayoutComponent
-        canActivate: [authGuard],    // Protegemos la ruta con el AuthGuard
+        component: LayoutComponent,
+        canActivate: [authGuard],
         children: [
             {
-                path: 'customer-form',
-                loadComponent: () => import('./feature/customer/customer-form/customer-form.component').then(m => m.CustomerFormComponent)
+                path: '',
+                loadComponent: () => import('./pages/home/main-menu/main-menu.component')
+                    .then(m => m.MainMenuComponent),
+                title: 'Menú Principal'
             },
             {
                 path: 'customer-list',
-                loadComponent: () => import('./feature/customer/customer-list/customer-list.component').then(m => m.CustomerListComponent)
+                loadComponent: () => import('./feature/customer/customer-list/customer-list.component')
+                    .then(m => m.CustomerListComponent),
+                title: 'Clientes'
             },
-            // Otras rutas principales van aquí
+            {
+                path: 'customer-form',
+                loadComponent: () => import('./feature/customer/customer-form/customer-form.component')
+                    .then(m => m.CustomerFormComponent),
+                title: 'Nuevo Cliente'
+            }
         ]
     },
-    { path: '**', redirectTo: 'login' }
+    {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
+    },
+    {
+        path: '**',
+        redirectTo: 'login'
+    }
 ];
