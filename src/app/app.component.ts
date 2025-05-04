@@ -4,7 +4,7 @@ import { CustomerListComponent } from './feature/customer/customer-list/customer
 import { CustomerFormComponent } from './feature/customer/customer-form/customer-form.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from '../app/components/login/login.component';
+import { LoginComponent } from '../app/feature/auth/login/login.component';
 import { AuthService } from '../app/core/services/auth.service';
 
 @Component({
