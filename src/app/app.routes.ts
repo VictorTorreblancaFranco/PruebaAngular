@@ -2,8 +2,11 @@
 import { Routes } from '@angular/router';
 import { authGuard } from '../app/core/services/auth.guard';
 import { LayoutComponent } from '../app/layout/layout/layout.component'; // Importamos el LayoutComponent
+import { RegisterComponent } from './components/register/register.component';
 
 export const routes: Routes = [
+
+    { path: 'register', component: RegisterComponent },
     {
         path: 'login',
         loadComponent: () => import('../app/components/login/login.component').then(m => m.LoginComponent)

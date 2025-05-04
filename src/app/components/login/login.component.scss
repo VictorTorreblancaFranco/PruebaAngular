@@ -161,6 +161,34 @@
                     }
                 }
             }
+
+            /* Nuevos estilos para la sección de registro */
+            .register-section {
+                text-align: center;
+                margin-top: 16px;
+                color: #666;
+                font-size: 14px;
+
+                .register-link {
+                    color: #2196F3;
+                    text-decoration: none;
+                    font-weight: 500;
+                    cursor: pointer;
+                    transition: color 0.2s ease;
+
+                    &:hover {
+                        text-decoration: underline;
+                        color: #0d8aee;
+                    }
+                }
+
+                .register-note {
+                    font-size: 12px;
+                    margin-top: 4px;
+                    color: #999;
+                    font-style: italic;
+                }
+            }
         }
     }
 }
