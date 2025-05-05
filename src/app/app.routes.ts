@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { authGuard } from './core/services/auth.guard';
 import { LayoutComponent } from './layout/layout/layout.component';
 
-// Exporta las rutas como constante
 export const routes: Routes = [
     {
         path: 'login',
@@ -21,16 +20,35 @@ export const routes: Routes = [
                 title: 'Menú Principal'
             },
             {
-                path: 'customer-list',
-                loadComponent: () => import('./feature/customer/customer-list/customer-list.component')
-                    .then(m => m.CustomerListComponent),
-                title: 'Clientes'
-            },
-            {
-                path: 'customer-form',
-                loadComponent: () => import('./feature/customer/customer-form/customer-form.component')
-                    .then(m => m.CustomerFormComponent),
-                title: 'Nuevo Cliente'
+                path: 'pages-customer',
+                loadComponent: () => import('./pages/pages-customer/pages-customer.component')
+                    .then(m => m.PagesCustomerComponent),
+                title: 'Gestión de Clientes',
+                children: [
+                    {
+                        path: '',
+                        redirectTo: 'lista',
+                        pathMatch: 'full'
+                    },
+                    {
+                        path: 'lista',
+                        loadComponent: () => import('./feature/customer/customer-list/customer-list.component')
+                            .then(m => m.CustomerListComponent),
+                        title: 'Lista de Clientes'
+                    },
+                    {
+                        path: 'formulario',
+                        loadComponent: () => import('./feature/customer/customer-form/customer-form.component')
+                            .then(m => m.CustomerFormComponent),
+                        title: 'Formulario de Cliente'
+                    },
+                    {
+                        path: 'editar/:id',
+                        loadComponent: () => import('./feature/customer/customer-form/customer-form.component')
+                            .then(m => m.CustomerFormComponent),
+                        title: 'Editar Cliente'
+                    }
+                ]
             }
         ]
     },

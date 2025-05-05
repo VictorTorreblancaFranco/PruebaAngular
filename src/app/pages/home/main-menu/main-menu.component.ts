@@ -22,36 +22,28 @@ import { AuthService } from '../../../core/services/auth.service';
 export class MainMenuComponent implements OnInit {
   userName = computed(() => this.authService.currentUser()?.name || 'Usuario');
   isLoading = signal(true);
-  
-  // Datos de ejemplo para las tarjetas
+
   menuCards = signal([
     {
       title: 'Clientes',
-      description: 'Gestión de clientes',
+      description: 'Gestión completa de clientes',
       icon: 'groups',
-      route: '/customer-list',
+      route: '/pages-customer',  // Esta es la ruta que usaremos
       color: '#3f51b5'
     },
     {
-      title: 'Nuevo Cliente',
-      description: 'Agregar nuevo cliente',
-      icon: 'person_add',
-      route: '/customer-form',
-      color: '#4caf50'
-    },
-    {
-      title: 'Reportes',
-      description: 'Ver reportes de ventas',
-      icon: 'assessment',
-      route: '/reports',
+      title: 'Pedidos',
+      description: 'Gestión de pedidos',
+      icon: 'shopping_cart',
+      route: '/orders',
       color: '#ff9800'
     }
-  ]);
+]);
+    // Puedes agregar más tarjetas según necesites
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    // Simulamos carga de datos
     setTimeout(() => {
       this.isLoading.set(false);
     }, 1000);
