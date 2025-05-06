@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';  // Agregado para mat-icon-button
+import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
-import { SidebarComponent } from "../../../layout/sidebar/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-main-menu',
@@ -15,6 +15,7 @@ import { SidebarComponent } from "../../../layout/sidebar/sidebar/sidebar.compon
     MatCardModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatButtonModule,  // Asegúrate de agregarlo aquí
     RouterModule,
   ],
   templateUrl: './main-menu.component.html',
@@ -97,7 +98,7 @@ export class MainMenuComponent implements OnInit {
     }
   ];
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     // Obtener el nombre del usuario desde el servicio AuthService
@@ -105,5 +106,11 @@ export class MainMenuComponent implements OnInit {
     setTimeout(() => {
       this.isLoading = false;
     }, 1000);
+  }
+
+  // Método de Cerrar Sesión
+  logout(): void {
+    this.authService.logout(); // Llama al método logout del servicio
+    this.router.navigate(['/login']); // Redirige a la página de login
   }
 }

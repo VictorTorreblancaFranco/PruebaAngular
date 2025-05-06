@@ -1,16 +1,3 @@
-/* Asegura que html y body ocupen toda la pantalla */
-html,
-body {
-    height: 100%;
-    /* Esto asegura que el html y body ocupen toda la pantalla */
-    width: 100%;
-    /* Asegura que ocupe todo el ancho */
-    margin: 0;
-    /* Elimina cualquier margen */
-    padding: 0;
-    /* Elimina cualquier relleno */
-}
-
 :host {
     display: block;
     height: 100vh;
@@ -18,93 +5,100 @@ body {
     overflow: hidden;
 }
 
+/* Estilos para el contenedor principal */
 .main-menu-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
-    /* Hace que el contenedor ocupe toda la altura de la pantalla */
     width: 100%;
-    /* Asegura que ocupe todo el ancho disponible */
     padding: 2rem;
     background-color: antiquewhite;
-    /* Asegúrate de que la ruta sea correcta */
     background-size: cover;
-    /* Asegura que la imagen de fondo cubra toda la pantalla */
     background-position: center;
-    /* Centra la imagen de fondo */
     background-repeat: no-repeat;
-    /* Evita que la imagen se repita */
+}
 
-    /* Mejora del h2 */
-    h1 {
-        font-size: 3rem;
-        /* Tamaño adecuado para que el título sea prominente */
+/* Estilos para el botón de Cerrar sesión */
+.logout-btn {
+    position: fixed;
+    bottom: 30px;     /* Distancia desde la parte inferior */
+    right: 30px;      /* Distancia desde la parte derecha */
+    background-color: antiquewhite;
+    color: #000000;
+    padding: 12px;     /* Tamaño del botón */
+    font-size: 24px;   /* Tamaño del ícono */
+    border-radius: 50%; /* Hace el fondo redondo */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.151); /* Sombra alrededor del botón */
+    transition: background-color 0.3s ease;
+    z-index: 100;      /* Asegura que el botón quede encima de otros elementos */
+    display: flex;     /* Usamos flexbox para centrar el ícono */
+    align-items: center;
+    justify-content: center; /* Centrado perfecto */
+    width: 60px;       /* Ancho del botón */
+    height: 60px;      /* Altura del botón */
+
+    &:hover {
+        background-color: antiquewhite;/* Rojo más oscuro al pasar el mouse */
+        color: rgb(240, 0, 0);
+    }
+
+    mat-icon {
+        font-size: 22px;   /* Tamaño del ícono dentro del botón */
+    }
+}
+
+/* Estilos para el título h1 */
+h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 2rem 0;
+    padding: 0.5rem 0;
+    text-align: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background-color: transparent;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 10px;
+}
+
+/* Spinner de carga */
+.loading-spinner {
+    margin: 2rem auto;
+    display: block;
+}
+
+/* Estilos de la cuadrícula de tarjetas */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+.menu-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    mat-icon {
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+    }
+
+    mat-card-title {
+        font-size: 18px;
         font-weight: 600;
-        /* Peso medio-fuerte para darle seriedad */
-        color: #2c3e50;
-        /* Gris oscuro, profesional y neutro */
-        margin: 2rem 0;
-        /* Espaciado alrededor del título para mayor claridad */
-        padding: 0.5rem 0;
-        /* Relleno para equilibrar la alineación */
-        text-align: center;
-        /* Centra el texto */
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-        /* Tipografía moderna y clara */
-        letter-spacing: 0.5px;
-        /* Espaciado entre letras para un toque limpio */
-        text-transform: uppercase;
-        /* Poner las letras en mayúsculas para dar un toque formal */
-        background-color: transparent;
-        /* Fondo transparente para mantenerlo limpio */
-        border-bottom: 2px solid #2c3e50;
-        /* Línea delgada en la parte inferior para definir el título */
-        padding-bottom: 10px;
-        /* Espaciado adicional abajo para separar el borde del texto */
-        box-shadow: none;
-        /* Sin sombra, para mantener el diseño claro y sin distracciones */
-    }
-
-
-
-
-
-    .loading-spinner {
-        margin: 2rem auto;
-        display: block;
-    }
-
-    .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1.5rem;
-        padding: 1rem;
-        width: 100%;
-        /* Asegura que la cuadrícula ocupe todo el espacio disponible */
-    }
-
-    .menu-card {
-        cursor: pointer;
-        transition: transform 0.3s ease;
-        width: 100%;
-        box-sizing: border-box;
-
-        &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        mat-icon {
-            font-size: 40px;
-            width: 40px;
-            height: 40px;
-        }
-
-        mat-card-title {
-            font-size: 18px;
-            font-weight: 600;
-        }
     }
 }
