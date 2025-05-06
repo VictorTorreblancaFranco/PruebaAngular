@@ -76,26 +76,58 @@ export class MainMenuComponent implements OnInit {
       color: '#ff5722'
     },
     {
-      title: 'Usuarios',
-      description: 'Gestionar usuarios',
-      icon: 'group',
-      route: '/usuarios',
-      color: '#8bc34a'
-    },
-    {
-      title: 'Configuración',
-      description: 'Configuración del sistema',
-      icon: 'settings',
-      route: '/configuracion',
-      color: '#ffeb3b'
-    },
-    {
       title: 'Estadísticas',
       description: 'Ver estadísticas de ventas',
       icon: 'trending_up',
       route: '/estadisticas',
       color: '#9e9e9e'
+    },
+    {
+      title: 'Colaboradores',
+      description: 'Ver colaboradores',
+      icon: 'group',  
+      route: '/colaboradores',
+      color: '#3e9e5e' 
+    }, 
+    {
+      title: 'Registrar Colaborador',
+      description: 'Añadir un nuevo colaborador',
+      icon: 'person_add',  // Usé el icono 'person_add' para registrar o agregar una persona
+      route: '/registrar-colaborador',
+      color: '#4caf50'  // Un verde brillante que indica acción
+    },
+    {
+      title: 'Registrar Factura',
+      description: 'Añadir una nueva factura de venta',
+      icon: 'receipt',  // Usé el icono 'receipt' para representar una factura
+      route: '/registrar-factura',
+      color: '#3f51b5'  // Un azul que indica seriedad y confianza
+    },
+    {
+      title: 'Recetas y Costos de Producción',
+      description: 'Gestionar las recetas y calcular los costos de producción',
+      icon: 'kitchen',  // El icono 'kitchen' representa cocina y recetas
+      route: '/recetas-costos',
+      color: '#ff9800'  // Naranja brillante que representa creatividad y energía
+    },
+    {
+      title: 'Añadir Proveedor',
+      description: 'Registrar un nuevo proveedor',
+      icon: 'local_shipping',  // El icono 'local_shipping' representa el envío y proveedores
+      route: '/añadir-proveedor',
+      color: '#e91e63'  // Rosa fuerte, que es vibrante y dinámico
+    },
+    {
+      title: 'Calendario de Pedidos',
+      description: 'Ver y gestionar los pedidos según las fechas',
+      icon: 'calendar_today',  // El icono 'calendar_today' representa el calendario
+      route: '/calendario-pedidos',
+      color: '#9c27b0'  // Púrpura, asociado con la planificación y organización
     }
+    
+    
+        
+    
   ];
 
   constructor(private authService: AuthService, private router: Router) { }
