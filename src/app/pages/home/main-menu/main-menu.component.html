@@ -4,6 +4,7 @@
     <mat-spinner *ngIf="isLoading" diameter="50" class="loading-spinner"></mat-spinner>
 
     <div *ngIf="!isLoading" class="cards-grid">
+        <!-- Recorremos el arreglo menuCards con ngFor -->
         <mat-card *ngFor="let card of menuCards" [routerLink]="card.route" class="menu-card"
             [style.border-top]="'4px solid ' + card.color">
             <mat-card-header>
@@ -15,6 +16,5 @@
             </mat-card-content>
         </mat-card>
     </div>
-    
-    <app-sidebar></app-sidebar>
+
 </div>

@@ -1,8 +1,21 @@
-html, body {
+/* Asegura que html y body ocupen toda la pantalla */
+html,
+body {
     height: 100%;
-    margin: 0;
+    /* Esto asegura que el html y body ocupen toda la pantalla */
     width: 100%;
-    padding: 0%;
+    /* Asegura que ocupe todo el ancho */
+    margin: 0;
+    /* Elimina cualquier margen */
+    padding: 0;
+    /* Elimina cualquier relleno */
+}
+
+:host {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 }
 
 .main-menu-container {
@@ -11,18 +24,52 @@ html, body {
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
+    /* Hace que el contenedor ocupe toda la altura de la pantalla */
     width: 100%;
-    /* Asegura que ocupe todo el ancho */
-    background-color: #f5f5f5;
+    /* Asegura que ocupe todo el ancho disponible */
     padding: 2rem;
-    margin: 0;
-    /* Asegúrate de que no haya márgenes extraños */
+    background-color: antiquewhite;
+    /* Asegúrate de que la ruta sea correcta */
+    background-size: cover;
+    /* Asegura que la imagen de fondo cubra toda la pantalla */
+    background-position: center;
+    /* Centra la imagen de fondo */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
 
+    /* Mejora del h2 */
     h1 {
+        font-size: 3rem;
+        /* Tamaño adecuado para que el título sea prominente */
+        font-weight: 600;
+        /* Peso medio-fuerte para darle seriedad */
+        color: #2c3e50;
+        /* Gris oscuro, profesional y neutro */
+        margin: 2rem 0;
+        /* Espaciado alrededor del título para mayor claridad */
+        padding: 0.5rem 0;
+        /* Relleno para equilibrar la alineación */
         text-align: center;
-        margin-bottom: 2rem;
-        color: #3f51b5;
+        /* Centra el texto */
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        /* Tipografía moderna y clara */
+        letter-spacing: 0.5px;
+        /* Espaciado entre letras para un toque limpio */
+        text-transform: uppercase;
+        /* Poner las letras en mayúsculas para dar un toque formal */
+        background-color: transparent;
+        /* Fondo transparente para mantenerlo limpio */
+        border-bottom: 2px solid #2c3e50;
+        /* Línea delgada en la parte inferior para definir el título */
+        padding-bottom: 10px;
+        /* Espaciado adicional abajo para separar el borde del texto */
+        box-shadow: none;
+        /* Sin sombra, para mantener el diseño claro y sin distracciones */
     }
+
+
+
+
 
     .loading-spinner {
         margin: 2rem auto;
@@ -31,7 +78,7 @@ html, body {
 
     .cards-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 1.5rem;
         padding: 1rem;
         width: 100%;
