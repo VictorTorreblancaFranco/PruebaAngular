@@ -1,4 +1,4 @@
-import { Component, computed, signal, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -20,15 +20,15 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrls: ['./main-menu.component.scss']
 })
 export class MainMenuComponent implements OnInit {
-  userName = computed(() => this.authService.currentUser()?.name || 'Usuario');
-  isLoading = signal(true);
+  userName: string = '';  // Inicializa con un valor vacío o predeterminado
+  isLoading = true;
 
-  menuCards = signal([
+  menuCards = [
     {
       title: 'Clientes',
       description: 'Gestión completa de clientes',
       icon: 'groups',
-      route: '/pages-customer',  // Esta es la ruta que usaremos
+      route: '/pages-customer',
       color: '#3f51b5'
     },
     {
@@ -38,14 +38,16 @@ export class MainMenuComponent implements OnInit {
       route: '/orders',
       color: '#ff9800'
     }
-]);
-    // Puedes agregar más tarjetas según necesites
+  ];
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.userName = this.authService.currentUser()?.name || 'Usuario';
     setTimeout(() => {
-      this.isLoading.set(false);
+      this.isLoading = false;
     }, 1000);
   }
 }
+
+

@@ -42,13 +42,16 @@ export class LoginComponent {
     if (this.isLoading()) return;
 
     this.isLoading.set(true);
-    this.errorMessage.set('');
+    this.errorMessage.set('');  // Resetear el mensaje de error
 
     const { email, password } = this.credentials();
 
+    // Intentar loguearse
     if (this.authService.login(email, password)) {
-      // La redirección se maneja en el AuthService
+      // Redirigir al usuario a la página principal después del login exitoso
+      this.router.navigate(['/']);  // Aquí rediriges a la página principal, ajusta la ruta según tu configuración
     } else {
+      // Si el login falla, mostrar mensaje de error
       this.errorMessage.set('Credenciales incorrectas. Intenta con: admin@panaderia.com / admin123');
     }
 
