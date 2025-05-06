@@ -13,8 +13,9 @@ export const routes: Routes = [
         component: LayoutComponent,
         canActivate: [authGuard],
         children: [
+            // Ruta para el Menú Principal
             {
-                path: '',
+                path: '',  // Asegúrate de que la ruta esté vacía para el menú principal
                 loadComponent: () => import('./pages/home/main-menu/main-menu.component')
                     .then(m => m.MainMenuComponent),
                 title: 'Menú Principal'

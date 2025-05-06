@@ -1,4 +1,3 @@
-<!-- src/app/layout/sidebar/sidebar.component.html -->
 <div class="sidebar-container" [class.expanded]="isExpanded">
     <div class="sidebar-header">
         <div class="logo-container">
@@ -9,6 +8,16 @@
 
     <nav class="sidebar-nav">
         <ul class="nav-menu">
+            <!-- Menú Principal -->
+            <li class="nav-item">
+                <a routerLink="/" routerLinkActive="active"> <!-- Aquí aseguramos que apunte a la ruta vacía -->
+                    <mat-icon class="nav-icon">home</mat-icon>
+                    <span class="nav-text">Menú Principal</span>
+                    <mat-icon class="chevron">chevron_right</mat-icon>
+                </a>
+            </li>
+
+            <!-- Otros items del menú -->
             <li class="nav-item">
                 <a routerLink="/customer-list" routerLinkActive="active">
                     <mat-icon class="nav-icon">people</mat-icon>
@@ -41,7 +50,6 @@
     </nav>
 
     <div class="sidebar-footer">
-        <!-- Debug info -->
         <div *ngIf="authService.currentUser() as user" style="display: none;">
             User: {{user | json}} | Role: {{user.role}} | Icon: {{getRoleIcon()}}
         </div>
