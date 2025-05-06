@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { SidebarComponent } from "../../../layout/sidebar/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-main-menu',
@@ -14,14 +15,15 @@ import { AuthService } from '../../../core/services/auth.service';
     MatCardModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    RouterModule
-  ],
+    RouterModule,
+    SidebarComponent
+],
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.scss']
 })
 export class MainMenuComponent implements OnInit {
   userName: string = '';  // Inicializa con un valor vacío o predeterminado
-  isLoading = true;
+  isLoading: boolean = true;
 
   menuCards = [
     {
@@ -49,5 +51,3 @@ export class MainMenuComponent implements OnInit {
     }, 1000);
   }
 }
-
-
