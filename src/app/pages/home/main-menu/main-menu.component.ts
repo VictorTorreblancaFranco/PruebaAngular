@@ -76,6 +76,13 @@ export class MainMenuComponent implements OnInit {
       color: '#ff5722'
     },
     {
+      title: 'Añadir Proveedor',
+      description: 'Registrar un nuevo proveedor',
+      icon: 'local_shipping',  // El icono 'local_shipping' representa el envío y proveedores
+      route: '/añadir-proveedor',
+      color: '#e91e63'  // Rosa fuerte, que es vibrante y dinámico
+    },
+    {
       title: 'Estadísticas',
       description: 'Ver estadísticas de ventas',
       icon: 'trending_up',
@@ -85,16 +92,9 @@ export class MainMenuComponent implements OnInit {
     {
       title: 'Colaboradores',
       description: 'Ver colaboradores',
-      icon: 'group',  
+      icon: 'group',
       route: '/colaboradores',
-      color: '#3e9e5e' 
-    }, 
-    {
-      title: 'Registrar Colaborador',
-      description: 'Añadir un nuevo colaborador',
-      icon: 'person_add',  // Usé el icono 'person_add' para registrar o agregar una persona
-      route: '/registrar-colaborador',
-      color: '#4caf50'  // Un verde brillante que indica acción
+      color: '#3e9e5e'
     },
     {
       title: 'Registrar Factura',
@@ -111,23 +111,27 @@ export class MainMenuComponent implements OnInit {
       color: '#ff9800'  // Naranja brillante que representa creatividad y energía
     },
     {
-      title: 'Añadir Proveedor',
-      description: 'Registrar un nuevo proveedor',
-      icon: 'local_shipping',  // El icono 'local_shipping' representa el envío y proveedores
-      route: '/añadir-proveedor',
-      color: '#e91e63'  // Rosa fuerte, que es vibrante y dinámico
-    },
-    {
       title: 'Calendario de Pedidos',
       description: 'Ver y gestionar los pedidos según las fechas',
       icon: 'calendar_today',  // El icono 'calendar_today' representa el calendario
       route: '/calendario-pedidos',
       color: '#9c27b0'  // Púrpura, asociado con la planificación y organización
+    },
+    {
+      title: 'Gestión de Pagos',
+      description: 'Registrar y gestionar pagos de ventas realizadas',
+      icon: 'payment',  // El icono 'payment' representa pagos
+      route: '/gestionar-pagos',
+      color: '#4caf50'  // Verde para indicar acción
+    },
+    {
+      title: 'Devoluciones',
+      description: 'Gestionar devoluciones de productos',
+      icon: 'undo',  // El icono 'undo' es adecuado para representar devoluciones
+      route: '/devoluciones',
+      color: '#e91e63'  // Rosa para acciones que se deben realizar con precaución
     }
-    
-    
-        
-    
+
   ];
 
   constructor(private authService: AuthService, private router: Router) { }
