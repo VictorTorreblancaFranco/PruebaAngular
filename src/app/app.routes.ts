@@ -15,8 +15,8 @@ export const routes: Routes = [
         children: [
             // Ruta para el Menú Principal
             {
-                path: '',  // Asegúrate de que la ruta esté vacía para el menú principal
-                loadComponent: () => import('./pages/home/main-menu/main-menu.component')
+                path: '',
+                loadComponent: () => import('./pages/home/home.component')
                     .then(m => m.MainMenuComponent),
                 title: 'Menú Principal'
             },
@@ -48,6 +48,37 @@ export const routes: Routes = [
                         loadComponent: () => import('./feature/customer/customer-form/customer-form.component')
                             .then(m => m.CustomerFormComponent),
                         title: 'Editar Cliente'
+                    }
+                ]
+            },
+            {
+                path: 'product',  // Modificado a /product
+                loadComponent: () => import('./pages/page-product/page-product.component')
+                    .then(m => m.PageProductComponent),
+                title: 'Gestión de Productos',
+                children: [
+                    {
+                        path: '',
+                        redirectTo: 'lista',
+                        pathMatch: 'full'
+                    },
+                    {
+                        path: 'lista',
+                        loadComponent: () => import('./feature/product/product-list/product-list.component')
+                            .then(m => m.ProductListComponent),
+                        title: 'Lista de Productos'
+                    },
+                    {
+                        path: 'formulario',
+                        loadComponent: () => import('./feature/product/product-form/product-form.component')
+                            .then(m => m.ProductFormComponent),
+                        title: 'Formulario de Producto'
+                    },
+                    {
+                        path: 'editar/:id',
+                        loadComponent: () => import('./feature/product/product-form/product-form.component')
+                            .then(m => m.ProductFormComponent),
+                        title: 'Editar Producto'
                     }
                 ]
             }

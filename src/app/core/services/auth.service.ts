@@ -11,6 +11,7 @@ interface User {
   name: string;
   email: string;
   role: UserRole;
+  token: string; // Ahora el token es obligatorio
 }
 
 @Injectable({
@@ -33,7 +34,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): boolean {
-    // Usamos aserción de tipo para garantizar que los roles son válidos
+    // Simulamos usuarios con roles y un "token" generado
     const users: { email: string, password: string, role: UserRole }[] = [
       { email: 'admin@panaderia.com', password: 'admin123', role: 'admin' },
       { email: 'panadero@panaderia.com', password: 'pan123', role: 'panadero' },
@@ -45,10 +46,11 @@ export class AuthService {
 
     if (userFound) {
       const user: User = {
-        id: Date.now(),
+        id: Date.now(), // Usamos Date.now() como ID temporal
         name: email.split('@')[0],
         email: email,
-        role: userFound.role // Aquí aseguramos que el tipo sea UserRole
+        role: userFound.role,
+        token: this.generateToken() // Generamos un token (puedes usar un token real en producción)
       };
 
       this._currentUser.set(user);
@@ -99,5 +101,11 @@ export class AuthService {
     if (this.isBrowser) {
       localStorage.removeItem(this.AUTH_KEY);
     }
+  }
+
+  // Método para simular la creación de un token
+  private generateToken(): string {
+    // Aquí puedes generar un token de manera más segura o utilizar un JWT
+    return 'fake-jwt-token-' + Math.random().toString(36).substr(2);
   }
 }

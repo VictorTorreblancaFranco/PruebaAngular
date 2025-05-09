@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 /* Variables SCM */
 $scm-primary: #5D4037;
 $scm-secondary: #8D6E63;
@@ -186,13 +188,13 @@ $scm-placeholder: #9e9e9e;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
         &:hover {
-            background-color: adjust-color($scm-primary, $lightness: -8%);
+            background-color: color.scale($scm-primary, $lightness: 10%);  // Ajuste de luminosidad
             transform: translateY(-1px);
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
         }
 
         &:disabled {
-            background-color: adjust-color($scm-primary, $lightness: 30%);
+            background-color: color.adjust($scm-primary, $lightness: 10%);  // Reemplazamos con color.adjust
             transform: none;
             box-shadow: none;
         }

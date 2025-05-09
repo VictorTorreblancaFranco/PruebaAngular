@@ -1,0 +1,35 @@
+<div class="columna-tabla">
+    <h2>Lista de Productos</h2>
+    <table class="tabla-productos">
+      <thead>
+        <tr>
+          <th>N°</th>
+          <th>Producto</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Categoría</th>
+          <th>Unidades</th>
+          <th>Estado</th>
+          <th>Fecha de Creación</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of productos">
+          <td>{{ p.id }}</td>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.descripcion }}</td>
+          <td>{{ p.precio | currency }}</td>
+          <td>{{ p.categoria }}</td>
+          <td>{{ p.unidades }}</td>
+          <td>{{ p.estado }}</td>
+          <td>{{ p.fechaCreacion }}</td>
+          <td class="Acciones">
+            <button (click)="editarProducto(p)">E</button>
+            <button (click)="eliminarProducto(p.id)">X</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

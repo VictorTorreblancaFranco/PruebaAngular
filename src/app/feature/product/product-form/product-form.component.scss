@@ -1,0 +1,129 @@
+/* Estilo general para la página */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  /* Evita el scroll global */
+}
+
+/* Contenedor del formulario */
+.columna-formulario {
+  width:25%;
+  /* El formulario ocupa el 30% del ancho */
+  height: 100vh;
+  /* El formulario ocupa toda la altura de la pantalla */
+  padding: 20px;
+  background-color: #fff;
+  /* Fondo blanco */
+  border-radius: 10px;
+  /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
+  position: fixed;
+  /* Mantener el formulario fijo */
+  top: 0;
+  /* Lo coloca en la parte superior */
+  left: 0;
+  /* Alineado a la izquierda */
+  z-index: 999;
+  /* Asegura que el formulario esté encima de otros elementos */
+  overflow: hidden;
+  /* Evita las barras de desplazamiento dentro del formulario */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Distribuye el espacio uniformemente entre los elementos */
+}
+
+/* Estilo de los inputs dentro del formulario */
+.input-formulario {
+  width: 100%;
+  /* Asegura que los inputs ocupen todo el ancho disponible */
+  padding: 8px;
+  /* Menor padding para que el formulario sea más compacto */
+  font-size: 14px;
+  /* Tamaño de fuente más pequeño */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  /* Bordes más pequeños para un aspecto más compacto */
+  background-color: #fafafa;
+  margin-bottom: 15px;
+  /* Espacio reducido entre los inputs */
+}
+
+/* Efecto cuando se hace foco en los inputs */
+.input-formulario:focus {
+  outline: none;
+  border-color: #4CAF50;
+  /* Resalta el borde cuando el campo está enfocado */
+}
+
+/* Botones */
+button {
+  padding: 10px 15px;
+  /* Botones más pequeños */
+  font-size: 14px;
+  /* Tamaño de fuente más pequeño */
+  background-color: #FF5722;
+  /* Naranja para los botones */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  /* Bordes más pequeños */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  /* Los botones ocupan todo el ancho disponible */
+}
+
+/* Estilo para los botones de limpiar y registrar */
+.form-buttons {
+  display: flex;
+  /* Usamos flexbox para alinear los botones en una fila */
+  justify-content: flex-start;
+  /* Alinea los botones a la izquierda */
+  gap: 10px;
+  /* Espacio entre los botones */
+  margin-top: 20px;
+  /* Espacio superior para los botones */
+}
+
+/* Botón Limpiar */
+.boton-limpiar {
+  padding: 8px 15px;
+  /* Botón Limpiar más pequeño */
+  font-size: 14px;
+  background-color: #FF5722;
+  /* Naranja para el botón Limpiar */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  /* Bordes más pequeños */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Botón Registrar Producto */
+button[type='submit'] {
+  padding: 8px 15px;
+  /* Botón de registrar más pequeño */
+  font-size: 14px;
+  /* Tamaño de fuente más pequeño */
+  background-color: #4CAF50;
+  /* Verde para el botón Registrar */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  /* Bordes más pequeños */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto hover para los botones */
+button:hover,
+.boton-limpiar:hover {
+  background-color: #E64A19;
+  /* Cambio de color al pasar el ratón */
+}

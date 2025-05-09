@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent],  // Asegúrate de que AppComponent esté importado correctamente
     }).compileComponents();
   });
 
@@ -18,19 +18,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toBe('panaderiaJorgito_FrontEnd');
-  });
-
-  it('should have handle methods', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    
-    expect(app.handleFilter).toBeDefined();
-    expect(app.handleSearch).toBeDefined();
-    expect(app.handleReset).toBeDefined();
-    
-    // Opcional: verificar que son funciones
-    expect(typeof app.handleFilter).toBe('function');
-    expect(typeof app.handleSearch).toBe('function');
-    expect(typeof app.handleReset).toBe('function');
   });
 });

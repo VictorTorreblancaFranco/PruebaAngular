@@ -1,0 +1,16 @@
+/* Estilos específicos para el componente product-list */
+.product-list {
+    width: 75%;
+    /* Ajustamos el 75% del ancho para que ocupe la mayor parte de la pantalla */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    /* El componente ocupa toda la altura de la pantalla */
+    overflow-y: auto;
+    /* Añade desplazamiento si el contenido excede la altura disponible */
+    position: relative;
+    top: 0;
+    right: 0;
+}

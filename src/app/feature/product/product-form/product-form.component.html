@@ -1,0 +1,46 @@
+<div class="contenedor">
+  <!-- Columna del formulario -->
+  <div class="columna-formulario">
+    <h2>{{ producto.id ? 'Editar Producto' : 'Registrar Producto' }}</h2>
+    <form (ngSubmit)="producto.id ? actualizarProducto() : registrarProducto()" class="formulario-pedido">
+      <label for="name_product">Nombre del Producto:</label>
+      <input type="text" id="name_product" [(ngModel)]="producto.nombre" name="name_product" class="input-formulario"
+        required>
+
+      <label for="description">Descripción:</label>
+      <input type="text" id="description" [(ngModel)]="producto.descripcion" name="description" class="input-formulario"
+        required>
+
+      <label for="price">Precio:</label>
+      <input type="number" id="price" [(ngModel)]="producto.precio" name="price" class="input-formulario" step="0.01"
+        required>
+
+      <label for="category">Categoría:</label>
+      <select id="category" [(ngModel)]="producto.categoria" name="category" class="input-formulario" required>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+      </select>
+
+      <label for="units">Unidades:</label>
+      <input type="number" id="units" [(ngModel)]="producto.unidades" name="units" class="input-formulario" required>
+
+      <label for="status">Estado:</label>
+      <select id="status" [(ngModel)]="producto.estado" name="status" class="input-formulario" required>
+        <option value="A">Activo</option>
+        <option value="I">Inactivo</option>
+      </select>
+
+      <label for="creation_date">Fecha de Creación:</label>
+      <input type="date" id="creation_date" [(ngModel)]="producto.fechaCreacion" name="creation_date"
+        class="input-formulario" required>
+
+      <!-- Botones en línea -->
+      <div class="form-buttons">
+        <button type="submit" class="boton-formulario">{{ producto.id ? 'Actualizar Producto' : 'Registrar Producto'
+          }}</button>
+        <button type="button" class="boton-limpiar" (click)="resetFormulario()">Limpiar</button> <!-- Botón Limpiar -->
+      </div>
+    </form>
+  </div>
+</div>

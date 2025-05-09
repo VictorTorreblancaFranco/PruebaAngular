@@ -1,0 +1,97 @@
+/* Estilos generales para la tabla */
+.columna-tabla {
+  width: 100;
+  /* La tabla ocupa el 75% del ancho */
+  padding: 20px;
+  background-color: #fff;
+  /* Fondo blanco */
+  border-radius: 8px;
+  /* Bordes más suaves */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* Sombra sutil */
+  overflow: hidden;
+  /* Elimina cualquier desbordamiento */
+  height: 100vh;
+  /* Asegura que la tabla ocupe toda la altura de la pantalla */
+}
+
+/* Estilo para la tabla */
+.tabla-productos {
+  width: 100%;
+  border-collapse: collapse;
+  /* Elimina los espacios entre las celdas */
+  margin-top: 20px;
+  font-size: 14px;
+  /* Tamaño de fuente más pequeño para mayor legibilidad */
+}
+
+/* Estilo de las celdas de la tabla */
+.tabla-productos th,
+.tabla-productos td {
+  padding: 10px 15px;
+  /* Espaciado adecuado en las celdas */
+  text-align: left;
+  /* Alineación de texto a la izquierda */
+  border-bottom: 1px solid #ddd;
+  /* Línea sutil debajo de las celdas */
+}
+
+/* Fondo de las cabeceras */
+.tabla-productos th {
+  background-color: #f4f4f4;
+  /* Fondo gris claro para las cabeceras */
+  font-weight: bold;
+  /* Hacer las cabeceras más prominentes */
+}
+
+/* Estilo de las filas alternadas */
+.tabla-productos tr:nth-child(even) {
+  background-color: #fafafa;
+  /* Fondo alternado gris claro */
+}
+
+.tabla-productos tr:hover {
+  background-color: #f1f1f1;
+  /* Fondo más oscuro al pasar el ratón */
+}
+
+/* Estilo de los botones dentro de la tabla */
+.tabla-productos .Acciones {
+  display: flex;
+  /* Usamos flexbox para alinear los botones horizontalmente */
+  gap: 10px;
+  /* Espacio entre los botones */
+  justify-content: center;
+  /* Centramos los botones */
+}
+
+/* Estilo de los botones */
+.tabla-productos button {
+  padding: 8px 14px;
+  /* Botones con padding ajustado */
+  font-size: 12px;
+  /* Texto más pequeño en los botones */
+  background-color: #007BFF;
+  /* Color de fondo azul para los botones */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  /* Transición suave de color */
+}
+
+/* Efecto hover de los botones */
+.tabla-productos button:hover {
+  background-color: #0056b3;
+  /* Color más oscuro cuando pasas el ratón por encima */
+}
+
+/* Estilo de los botones de acción (editar/accionar) */
+.tabla-productos button:focus {
+  outline: none;
+  /* Quitar el borde azul de enfoque */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  /* Agregar un pequeño resplandor al hacer clic */
+}

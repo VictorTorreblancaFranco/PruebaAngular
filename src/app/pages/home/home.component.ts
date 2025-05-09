@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';  // Agregado para mat-icon-button
 import { RouterModule, Router } from '@angular/router';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -18,8 +18,8 @@ import { AuthService } from '../../../core/services/auth.service';
     MatButtonModule,  // Asegúrate de agregarlo aquí
     RouterModule,
   ],
-  templateUrl: './main-menu.component.html',
-  styleUrls: ['./main-menu.component.scss']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class MainMenuComponent implements OnInit {
   userName: string = '';  // Inicializa con un valor vacío o predeterminado
@@ -44,7 +44,7 @@ export class MainMenuComponent implements OnInit {
       title: 'Productos',
       description: 'Gestión de productos',
       icon: 'store',
-      route: '/productos',
+      route: '/product',
       color: '#4caf50'
     },
     {
